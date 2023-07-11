@@ -8,6 +8,7 @@ public class Console {
     private final Reader reader;
     private final Writer writer;
     private final CalculationItems items;
+    private final String PLUS = "+";
 
     public Console(Reader reader, Writer writer, CalculationItems items) {
         this.reader = reader;
@@ -15,20 +16,22 @@ public class Console {
         this.items = items;
     }
 
-    public CalculationItems input() {
-        writer.write("첫번째 숫자를 입력해주세요.");
-        String firstNumber = reader.read();
-        items.add(firstNumber);
-        
-        writer.write("두번째 숫자를 입력해주세요.");
-        String secondNumber = reader.read();
-        items.add(secondNumber);
+    public CalculationItems makeCalculationItems() {
+        addInputNumber("첫번째 숫자를 입력해주세요.");
+        items.add(PLUS);
+        addInputNumber("두번째 숫자를 입력해주세요.");
 
         return items;
     }
 
     public <T> void output(T message) {
         writer.write(message);
+    }
+
+    private void addInputNumber(String message) {
+        writer.write(message);
+        String read = reader.read();
+        items.add(read);
     }
 
 }

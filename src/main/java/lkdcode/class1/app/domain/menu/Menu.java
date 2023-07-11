@@ -15,7 +15,7 @@ public class Menu {
     }
 
     public void start() {
-        CalculationItems items = console.input();
+        CalculationItems items = console.makeCalculationItems();
         double result = calculator.calculate(items);
         console.output(result);
     }

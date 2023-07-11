@@ -17,4 +17,5 @@ public class Plus implements Operator {
     public double result(double firstNumber, double secondNumber) {
         return firstNumber + secondNumber;
     }
+
 }
