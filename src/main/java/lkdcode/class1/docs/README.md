@@ -1,5 +1,41 @@
 # ☕ Class 1
 
+
+<br>
+
+
+```mermaid
+flowchart LR
+    app --> 입력 --> 계산 --> 결과출력
+```
+
+<br>
+<br>
+
+```mermaid
+flowchart LR
+    입력 --> 첫번째숫자입력하세요 --> 두번째숫자입력하세요 --> 입력한값이담긴상자
+```
+
+<br>
+<br>
+
+```mermaid
+flowchart LR
+    계산 --> 상자에서첫번째값꺼내기 --> operator --> 상자에서두번째값꺼내기 --> 결과값
+```
+
+<br>
+<br>
+
+```mermaid
+flowchart LR
+    결과출력 --> 계산된결과를받아서출력
+```
+
+
+
+
 <br>
 <br>
 2023.07.09 ~ 2023.07.15
