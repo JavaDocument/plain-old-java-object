@@ -18,4 +18,8 @@ public class CalculationItems {
         return queue.poll();
     }
 
+    public boolean isEmpty() {
+        return queue.isEmpty();
+    }
+
 }
