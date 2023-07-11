@@ -2,10 +2,10 @@ package lkdcode.class1.app.domain.view.io;
 
 import java.util.Scanner;
 
-public class ConsoleReader implements Reader {
+public class ReaderImpl implements Reader {
     private final Scanner scanner;
 
-    public ConsoleReader() {
+    public ReaderImpl() {
         this.scanner = new Scanner(System.in);
     }
 
@@ -13,4 +13,5 @@ public class ConsoleReader implements Reader {
     public String read() {
         return scanner.nextLine();
     }
+
 }
