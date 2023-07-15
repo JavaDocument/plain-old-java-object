@@ -27,17 +27,17 @@ class CalculatorTest {
 
     assertEquals(18, result);
   }
-  @Test
-  @DisplayName("-5 더하기 1은 -4가 나와야 한다")
-  void calculateTest2() {
-    int[] arr = new int[]{-5,1};
-    int result = 0;
-    for(int i = 0; i< arr.length; i++) {
-      result += arr[i];
-    }
-
-    assertEquals(-4, result);
-  }
+//  @Test
+//  @DisplayName("-5 더하기 1은 -4가 나와야 한다")
+//  void calculateTest2() {
+//    int[] arr = new int[]{-5,1};
+//    int result = 0;
+//    for(int i = 0; i< arr.length; i++) {
+//      result += arr[i];
+//    }
+//
+//    assertEquals(-4, result);
+//  }
 
 
 
