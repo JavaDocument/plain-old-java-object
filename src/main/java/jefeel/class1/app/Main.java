@@ -20,7 +20,9 @@ public class Main {
         Calculator calculator = new Calculator();
 
         OutputResult result = new OutputResult();
+
         int calcResult = calculator.add(arr);
+
         result.outputResult(calcResult);
     }
 }
