@@ -34,4 +34,4 @@
 
 ---
 
-[23.07.15]()
+[23.07.15](https://github.com/JavaDocument/Class1/blob/main/docs/230715.md)
