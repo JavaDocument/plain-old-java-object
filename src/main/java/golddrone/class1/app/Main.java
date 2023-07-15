@@ -2,6 +2,7 @@ package golddrone.class1.app;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("hello world!");
+        Calculator calculator = new CalculatorImpl();
+        calculator.run();
     }
 }
