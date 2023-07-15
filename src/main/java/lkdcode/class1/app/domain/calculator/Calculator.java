@@ -5,11 +5,17 @@ import lkdcode.class1.app.domain.operator.Operator;
 import lkdcode.class1.app.domain.operator.Plus;
 import lkdcode.class1.app.domain.util.Converter;
 
+import java.util.Objects;
+import java.util.stream.Stream;
+
+import static lkdcode.class1.app.domain.operator.OperatorType.PLUS;
+
 
 public class Calculator {
     private final Converter converter;
+    private final double ZERO = 0.0;
     private Operator operator;
-    private double result;
+
 
     public Calculator(Converter converter) {
         this.converter = converter;
@@ -17,21 +23,20 @@ public class Calculator {
     }
 
     public double calculate(CalculationItems items) {
+        return Stream.generate(items::get)
+                .takeWhile(Objects::nonNull)
+                .mapToDouble(this::processItem)
+                .reduce(ZERO, (firstNumber, secondNumber) -> operator.result(firstNumber, secondNumber));
+    }
 
-        while (!items.isEmpty()) {
-            String item = items.get();
-            double number;
-
-            if (item.equals("+")) {
-                operator = Plus.getInstance();
-                continue;
-            }
-
-            number = converter.to(item);
-            result = operator.result(result, number);
+    private double processItem(String item) {
+        if (item.equals(PLUS.getType())) {
+            operator = Plus.getInstance();
+            return ZERO;
         }
 
-        return result;
+        return converter.to(item);
     }
+
 
 }
