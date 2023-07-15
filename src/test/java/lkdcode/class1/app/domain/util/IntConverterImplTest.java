@@ -12,7 +12,7 @@ class IntConverterImplTest {
 
     @BeforeEach
     void init() {
-        this.converter = new IntConverterImpl();
+        this.converter = new DoubleConverterImpl();
     }
 
     @Test

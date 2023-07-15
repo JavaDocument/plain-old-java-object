@@ -1,7 +1,7 @@
 package lkdcode.class1.app.domain.calculator;
 
 import lkdcode.class1.app.domain.util.Converter;
-import lkdcode.class1.app.domain.util.IntConverterImpl;
+import lkdcode.class1.app.domain.util.DoubleConverterImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ class CalculatorTest {
 
     @BeforeEach
     void init() {
-        Converter converter = new IntConverterImpl();
+        Converter converter = new DoubleConverterImpl();
         calculator = new Calculator(converter);
     }
 
