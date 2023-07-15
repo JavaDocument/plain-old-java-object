@@ -11,20 +11,21 @@ public class Console {
     private final Valid valid;
     private final CalculationItems items;
     private final String PLUS = "+";
-    private final int STOP = 3;
     private int inputCount;
 
-    public Console(Reader reader, Writer writer, CalculationItems items, Valid valid) {
+    private int startIdx = 1;
+
+    private Console(Reader reader, Writer writer, Valid valid, CalculationItems items, int inputCount) {
         this.reader = reader;
         this.writer = writer;
-        this.items = items;
         this.valid = valid;
-        this.inputCount = 1;
+        this.items = items;
+        this.inputCount = inputCount + 1;
     }
 
     public CalculationItems makeCalculationItems() {
-        while (inputCount != STOP) {
-            output(inputCount + "번째 숫자를 입력해주세요.");
+        while (startIdx != inputCount) {
+            output(startIdx + "번째 숫자를 입력해주세요.");
             addInputNumber();
             items.add(PLUS);
         }
@@ -41,11 +42,50 @@ public class Console {
 
         if (valid.validNumber(inputValue)) {
             items.add(inputValue);
-            inputCount++;
+            startIdx++;
             return;
         }
 
         output("정수를 입력해주세요.");
+    }
+
+
+    public static class Builder {
+        private Reader reader;
+        private Writer writer;
+        private Valid valid;
+        private CalculationItems items;
+        private int inputCount;
+
+        public Builder reader(Reader reader) {
+            this.reader = reader;
+            return this;
+        }
+
+        public Builder writer(Writer writer) {
+            this.writer = writer;
+            return this;
+        }
+
+        public Builder valid(Valid valid) {
+            this.valid = valid;
+            return this;
+        }
+
+        public Builder items(CalculationItems items) {
+            this.items = items;
+            return this;
+        }
+
+        public Builder inputCount(int inputCount) {
+            this.inputCount = inputCount;
+            return this;
+        }
+
+        public Console build() {
+            return new Console(reader, writer, valid, items, inputCount);
+        }
+
     }
 
 
