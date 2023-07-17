@@ -1,5 +1,9 @@
 package lkdcode.class2.app.domain.member;
 
-public interface MemberList {
+import java.util.Collection;
+
+public sealed interface MemberList permits MemberListImpl, MemberResultImpl {
+
+    Collection<?> memberList();
 
 }
