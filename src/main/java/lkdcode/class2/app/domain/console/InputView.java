@@ -13,6 +13,7 @@ public final class InputView implements Input {
 
     @Override
     public String input() {
+        // TODO : resources
         try {
             return bufferedReader.readLine();
         } catch (IOException e) {

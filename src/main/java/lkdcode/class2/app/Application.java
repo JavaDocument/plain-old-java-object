@@ -1,9 +1,6 @@
 package lkdcode.class2.app;
 
-import jdk.incubator.vector.Vector;
-import lkdcode.class2.app.domain.member.Profile;
-
-import java.util.*;
+import lkdcode.class2.app.domain.controller.Controller;
 
 public class Application {
     public static void main(String[] args) {
@@ -14,7 +11,8 @@ public class Application {
                 {"mj@email.com", "엠제이"},
                 {"nowm@email.com", "이제엠"}};
 
-        Queue<Profile> test = new LinkedList<>();
+        Controller controller = new Controller();
+        controller.solution(list);
 
     }
 

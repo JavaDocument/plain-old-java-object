@@ -1,5 +1,7 @@
 package lkdcode.class2.app.domain.service;
 
+import java.util.Queue;
+
 public interface Separator {
-    String split(String nickname);
+    Queue<String> split(String niSckname);
 }
