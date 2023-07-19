@@ -6,10 +6,9 @@ import java.util.*;
 
 public class AppTest {
 
-    public static List<String> findDuplicateNicknames(List<String> nicknameList) {
-        List<String> result = new ArrayList<>();
-        Map<String, Integer> countMap = new HashMap<>();
+    public static Map<String, String> findDuplicateNicknames(List<String> nicknameList) {
         Map<String, String> nicknameEmailMap = new HashMap<>();
+        Map<String, Integer> countMap = new HashMap<>();
 
         for (String nickname : nicknameList) {
             for (int i = 0; i < nickname.length() - 1; i++) {
@@ -19,7 +18,6 @@ public class AppTest {
         }
 
         for (Member member : getMembers()) {
-
             String nickname = member.getNickName();
             String email = member.getEmail();
 
@@ -32,15 +30,10 @@ public class AppTest {
                 }
             }
             if (hasDuplicateTwoChars) {
-                result.add(nickname);
                 nicknameEmailMap.put(nickname, email);
             }
         }
-
-        for (String nickname : result) {
-            System.out.println(nicknameEmailMap.get(nickname));
-        }
-        return result;
+        return nicknameEmailMap;
     }
 
     public static Set<Member> getMembers() {
@@ -55,12 +48,18 @@ public class AppTest {
 
 
     public static void main(String[] args) {
-
         List<String> nicknameList = new ArrayList<>();
+
         for (Member member : getMembers()) {
             nicknameList.add(member.getNickName());
         }
-        List<String> nicknames = findDuplicateNicknames(nicknameList);
+
+        Map<String, String> nicknameEmailMap = findDuplicateNicknames(nicknameList);
+
+        for (String nickname : nicknameEmailMap.keySet()) {
+            String email = nicknameEmailMap.get(nickname);
+            System.out.println(email);
+        }
 
 
     }
