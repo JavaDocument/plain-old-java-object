@@ -1,14 +1,27 @@
 package lkdcode.class2.app.domain.member;
 
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
+import java.util.stream.Collectors;
 
-public sealed interface Crew permits CrewList {
+public class Crew {
+    private final Map<String, String> crew = new LinkedHashMap<>();
 
-    Queue<Profile> get();
+    public Crew(String[][] profiles) {
+        int EMAIL_IDX = 0;
+        int NICKNAME_IDX = 1;
 
-    public List<String> getNicknameList();
+        Arrays.stream(profiles)
+                .forEach(profile -> crew.put(profile[NICKNAME_IDX], profile[EMAIL_IDX]));
+    }
 
-    public List<String> getEmailList();
+    public List<String> getNicknameList() {
+        return new ArrayList<>(crew.keySet());
+    }
+
+    public PriorityQueue<String> getResultList(Set<String> nicknameList) {
+        return nicknameList.stream()
+                .map(crew::get)
+                .collect(Collectors.toCollection(PriorityQueue::new));
+    }
 
 }
