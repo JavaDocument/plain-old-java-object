@@ -11,8 +11,8 @@ public class Application {
                 {"mj@email.com", "엠제이"},
                 {"nowm@email.com", "이제엠"}};
 
-        Controller controller = new Controller();
-        controller.solution(list);
+        Controller controller = new Controller(list);
+        controller.solution();
 
     }
 

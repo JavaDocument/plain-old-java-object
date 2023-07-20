@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class Crew {
     private final Map<String, String> crew = new LinkedHashMap<>();
 
-    public Crew(String[][] profiles) {
+    public Crew(final String[][] profiles) {
         int EMAIL_IDX = 0;
         int NICKNAME_IDX = 1;
 
@@ -18,10 +18,11 @@ public class Crew {
         return new ArrayList<>(crew.keySet());
     }
 
-    public PriorityQueue<String> getResultList(Set<String> nicknameList) {
+    public List<String> getResultList(final Set<String> nicknameList) {
         return nicknameList.stream()
                 .map(crew::get)
-                .collect(Collectors.toCollection(PriorityQueue::new));
+                .sorted()
+                .collect(Collectors.toList());
     }
 
 }

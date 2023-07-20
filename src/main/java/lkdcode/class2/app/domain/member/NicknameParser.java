@@ -6,7 +6,7 @@ import java.util.Queue;
 public class NicknameParser {
     private final Queue<String> nicknameQueue = new LinkedList<>();
 
-    public NicknameParser(String profile) {
+    public NicknameParser(final String profile) {
         int TWO_CHARACTERS = 2;
 
         for (int i = 0; i < profile.length() - 1; i++) {

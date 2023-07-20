@@ -7,36 +7,60 @@ import java.util.*;
 
 public class Controller {
 
-    public void solution(String[][] list) {
+    private final Set<String> checkNames;
+    private final List<String> nicknameList;
+    private final Crew crew;
+
+    private NicknameParser nicknameParser;
+    private String nickname;
+    private String targetNickname;
+
+    public Controller(final String[][] list) {
+        this.crew = new Crew(list);
+        this.checkNames = new HashSet<>();
+        this.nicknameList = crew.getNicknameList();
+    }
+
+    public void solution() {
         // TODO : refactor
-        Crew crew = new Crew(list);
 
-        Set<String> duplicateNicknames = new HashSet<>();
-        List<String> nicknameList = crew.getNicknameList();
+        for (int currentIdx = 0; currentIdx < nicknameList.size(); currentIdx++) {
+            targetNickname = nicknameList.get(currentIdx);
 
-        for (int i = 0; i < nicknameList.size(); i++) {
-            String nickname = nicknameList.get(i);
-
-            for (int j = i + 1; j < nicknameList.size(); j++) {
-                String target = nicknameList.get(j);
-                NicknameParser nicknameParser = new NicknameParser(nickname);
-
-                while (!nicknameParser.isEmpty()) {
-                    String word = nicknameParser.dequeue();
-
-                    if (target.contains(word)) {
-                        duplicateNicknames.add(target);
-                        duplicateNicknames.add(nickname);
-                        break;
-                    }
-                }
-            }
-
+            compare(currentIdx);
         }
 
-        PriorityQueue<String> resultList = crew.getResultList(duplicateNicknames);
+        resultPrint();
+    }
+
+    private void resultPrint() {
+        List<String> resultList = crew.getResultList(checkNames);
 
         System.out.println(resultList);
-
     }
+
+    private void compare(final int currentIdx) {
+        for (int compareIdx = currentIdx + 1; compareIdx < nicknameList.size(); compareIdx++) {
+            nickname = nicknameList.get(compareIdx);
+            nicknameParser = new NicknameParser(targetNickname);
+
+            parser();
+        }
+    }
+
+    private void parser() {
+        while (!nicknameParser.isEmpty()) {
+            String word = nicknameParser.dequeue();
+
+            checkContains(word);
+        }
+    }
+
+    private void checkContains(final String word) {
+        if (nickname.contains(word)) {
+            checkNames.add(nickname);
+            checkNames.add(targetNickname);
+        }
+    }
+
 }
