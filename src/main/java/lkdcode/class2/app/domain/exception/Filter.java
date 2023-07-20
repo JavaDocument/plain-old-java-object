@@ -15,7 +15,7 @@ public class Filter {
     private Filter() {
     }
 
-    public static void init(String[][] list) {
+    public static void check(String[][] list) {
         Filter.list = list;
         filter();
     }
