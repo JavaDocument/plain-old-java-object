@@ -1,5 +1,7 @@
 package yewon.class2.app.service;
 
+import static yewon.class2.app.common.ReplaceString.replace;
+
 public class EmailValidator {
     private final String EMAIL_FORMAT = "@email.com";
     // 11자 이상, 20자 미만
@@ -11,11 +13,12 @@ public class EmailValidator {
     }
 
     private boolean formatValid(String email) {
-        return email.endsWith(EMAIL_FORMAT);
+        return replace(email).endsWith(EMAIL_FORMAT);
     }
 
     private boolean sizeValid(String email) {
-        return email.length() >= MIN_LENGTH && email.length() < MAX_LENGTH;
+        return replace(email).length() >= MIN_LENGTH
+                && replace(email).length() < MAX_LENGTH;
     }
 
 }

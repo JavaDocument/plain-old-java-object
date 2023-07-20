@@ -4,28 +4,20 @@ import yewon.class2.app.handler.InputHandler;
 import yewon.class2.app.handler.OutputHandler;
 import yewon.class2.app.repository.Crew;
 import yewon.class2.app.repository.CrewList;
-import yewon.class2.app.service.DuplicateValidator;
-import yewon.class2.app.service.EmailValidator;
-import yewon.class2.app.service.NicknameValidator;
+import yewon.class2.app.service.Validator;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Controller {
 
     private final InputHandler input;
     private final OutputHandler output;
-    private final DuplicateValidator duplicateValidator;
-    private final EmailValidator emailValidator;
-    private final NicknameValidator nicknameValidator;
-    private List<String> duplicateEmailList;
+    private final Validator validator;
+
+    private List<String> duplicateList;
 
     public Controller() {
-        nicknameValidator = new NicknameValidator();
-        emailValidator = new EmailValidator();
-        duplicateValidator = new DuplicateValidator();
+        validator = new Validator();
         input = new InputHandler();
         output = new OutputHandler();
         on();
@@ -34,30 +26,33 @@ public class Controller {
     private void on() {
         output.message("크루 정보 입력 => ");
         String inputCrewData = input.input();
-        parseCrew(inputCrewData);
+        validator.crewListValid(inputCrewData);
+        setCrewList(inputCrewData);
+        validator.crewListLengthValid();
         solution();
     }
 
+
     private void solution() {
-        duplicateEmailList = duplicateValidator.validNickname();
-        if (duplicateEmailList.size() > 0) {
-            String result = duplicateEmailList.stream().distinct().sorted().toList().toString();
-            output.message("result = " + result);
+        duplicateList = validator.findDuplicateNickname();
+        if (duplicateList.size() > 0) {
+            String result = duplicateList.stream().distinct().sorted().toList().toString();
+            output.message("result : " + result);
             return;
         }
-        output.message("중복없음!");
+        output.message("👍 중복없음!");
     }
 
-    private void parseCrew(String crewData) {
-        String substrCrewData = crewData.substring(2, crewData.length() - 2);
-        String[] crewDataArray = substrCrewData.split("], ?\\[");
-        for (String crew : crewDataArray) {
-            String[] splitCrew = crew.split(", | ");
-            if (!emailValidator.valid(splitCrew[0]) && nicknameValidator.valid(splitCrew[1])) {
-                return;
-            }
-            CrewList.getInstance().setCrewList(new Crew(splitCrew[0], splitCrew[1]));
+    private void setCrewList(String inputCrewData) {
+        for (String crewList : parseArray(inputCrewData)) {
+            String[] crew = crewList.split(", | ");
+            validator.crewValid(crew);
+            CrewList.getInstance().setCrewList(new Crew(crew[0], crew[1])); // [0]=이메일, [1]=닉네임
         }
     }
 
+    private String[] parseArray(String inputCrewData) {
+        String substrCrewData = inputCrewData.substring(2, inputCrewData.length() - 2);
+        return substrCrewData.split("], ?\\[");
+    }
 }
