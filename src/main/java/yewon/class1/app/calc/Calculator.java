@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import static yewon.class1.app.calc.InputHandler.inputNumber;
 
+
 /**
  * 계산을 수행하는 클래스
  */
