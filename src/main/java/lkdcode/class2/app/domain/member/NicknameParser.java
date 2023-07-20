@@ -19,8 +19,8 @@ public class NicknameParser {
         return nicknameQueue.poll();
     }
 
-    public boolean isEmpty() {
-        return nicknameQueue.isEmpty();
+    public boolean isNotEmpty() {
+        return !nicknameQueue.isEmpty();
     }
 
 }

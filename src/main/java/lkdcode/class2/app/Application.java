@@ -1,6 +1,7 @@
 package lkdcode.class2.app;
 
 import lkdcode.class2.app.domain.controller.Controller;
+import lkdcode.class2.app.domain.exception.Filter;
 
 public class Application {
     public static void main(String[] args) {
@@ -10,6 +11,8 @@ public class Application {
                 {"woniee@email.com", "워니"},
                 {"mj@email.com", "엠제이"},
                 {"nowm@email.com", "이제엠"}};
+
+        Filter.init(list);
 
         Controller controller = new Controller(list);
         controller.solution();

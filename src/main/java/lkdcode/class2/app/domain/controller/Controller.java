@@ -7,9 +7,9 @@ import java.util.*;
 
 public class Controller {
 
-    private final Set<String> checkNames;
-    private final List<String> nicknameList;
     private final Crew crew;
+    private final List<String> nicknameList;
+    private final Set<String> checkNames;
 
     private NicknameParser nicknameParser;
     private String nickname;
@@ -17,16 +17,13 @@ public class Controller {
 
     public Controller(final String[][] list) {
         this.crew = new Crew(list);
-        this.checkNames = new HashSet<>();
         this.nicknameList = crew.getNicknameList();
+        this.checkNames = new HashSet<>();
     }
 
     public void solution() {
-        // TODO : refactor
 
         for (int currentIdx = 0; currentIdx < nicknameList.size(); currentIdx++) {
-            targetNickname = nicknameList.get(currentIdx);
-
             compare(currentIdx);
         }
 
@@ -40,6 +37,8 @@ public class Controller {
     }
 
     private void compare(final int currentIdx) {
+        targetNickname = nicknameList.get(currentIdx);
+
         for (int compareIdx = currentIdx + 1; compareIdx < nicknameList.size(); compareIdx++) {
             nickname = nicknameList.get(compareIdx);
             nicknameParser = new NicknameParser(targetNickname);
@@ -49,7 +48,7 @@ public class Controller {
     }
 
     private void parser() {
-        while (!nicknameParser.isEmpty()) {
+        while (nicknameParser.isNotEmpty()) {
             String word = nicknameParser.dequeue();
 
             checkContains(word);
