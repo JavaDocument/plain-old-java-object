@@ -2,6 +2,8 @@ package lkdcode.class2.app.domain.member;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class NicknameParser {
     private final Queue<String> nicknameQueue = new LinkedList<>();
@@ -9,10 +11,9 @@ public class NicknameParser {
     public NicknameParser(final String profile) {
         int TWO_CHARACTERS = 2;
 
-        for (int i = 0; i < profile.length() - 1; i++) {
-            String nickname = profile.substring(i, i + TWO_CHARACTERS);
-            nicknameQueue.add(nickname);
-        }
+        IntStream.range(0, profile.length() - 1)
+                .mapToObj(i -> profile.substring(i, i + TWO_CHARACTERS))
+                .forEach(nicknameQueue::add);
     }
 
     public String dequeue() {
