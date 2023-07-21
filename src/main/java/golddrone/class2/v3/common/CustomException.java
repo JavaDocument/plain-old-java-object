@@ -1,4 +1,4 @@
-package golddrone.class2.v3;
+package golddrone.class2.v3.common;
 
 public class CustomException extends RuntimeException{
     public CustomException() {
