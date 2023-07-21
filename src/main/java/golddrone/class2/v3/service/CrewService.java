@@ -29,11 +29,11 @@ public class CrewService {
     public List<String> process(List<Crew> crewList) throws CustomException {
         crewValidate(crewList);
         List<String> list = new ArrayList<>();
-        process(crewList, list);
+        solution(crewList, list);
         return list;
     }
 
-    private static void process(List<Crew> crewList, List<String> list) {
+    private static void solution(List<Crew> crewList, List<String> list) {
         crewList.forEach((crew) -> {
             duplicateProcess(crewList, list, crew.getEmail(), crew.getNickname());
         });

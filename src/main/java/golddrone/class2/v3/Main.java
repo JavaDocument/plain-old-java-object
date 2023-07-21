@@ -16,10 +16,19 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         CrewService crewService = new CrewService(crewRepository);
 
+        /*
+        [ ["jm@email.com", "제이엠"],
+         ["jason@email.com", "제이슨"],
+          ["woniee@email.com", "워니"],
+          ["mj@email.com", "엠제이"],
+          ["nowm@email.com", "이제엠"] ]
+         */
+
+
         while (true){
             Crew crew = crewView.inputCrew();
             crewService.saveCrew(crew);
-            System.out.println("계속 저장하시겠습니까? y/Y");
+            System.out.println("😒계속 저장하시겠습니까? y/Y");
             if(!(scanner.next().toLowerCase().charAt(0) == 'y')){
                 break;
             }
