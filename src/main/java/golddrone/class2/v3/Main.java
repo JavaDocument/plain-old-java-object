@@ -1,26 +1,44 @@
 package golddrone.class2.v3;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import golddrone.class2.v3.entity.Crew;
+import golddrone.class2.v3.repository.CrewRepository;
+import golddrone.class2.v3.repository.CrewRepositoryImpl;
+import golddrone.class2.v3.service.CrewService;
+import golddrone.class2.v3.view.CrewView;
+
+import java.util.*;
 
 public class Main {
+
     public static void main(String[] args){
-        Map<String, String> crewList = new HashMap<>();
-        Solution solution = new Solution();
-        crewList.put("jm@email.com", "제이엠");
-        crewList.put("jason@email.com", "제이슨");
-        crewList.put("woniee@email.com", "워니");
-        crewList.put("mj@email.com", "엠제이");
-        crewList.put("nowm@email.com", "이제엠");
+        CrewRepository crewRepository = new CrewRepositoryImpl();
+        CrewView crewView = new CrewView();
+        Scanner scanner = new Scanner(System.in);
+        CrewService crewService = new CrewService(crewRepository);
+
+        /*
+        [ ["jm@email.com", "제이엠"],
+         ["jason@email.com", "제이슨"],
+          ["woniee@email.com", "워니"],
+          ["mj@email.com", "엠제이"],
+          ["nowm@email.com", "이제엠"] ]
+         */
 
 
-        List<String> list = solution.process(crewList);
+        while (true){
+            Crew crew = crewView.inputCrew();
+            crewService.saveCrew(crew);
+            System.out.println("😒계속 저장하시겠습니까? y/Y");
+            if(!(scanner.next().toLowerCase().charAt(0) == 'y')){
+                break;
+            }
+        }
 
-        Collections.sort(list);
+        List<Crew> crewList = crewService.findAll();
+        List<String> emailList = crewService.process(crewList);
+        Collections.sort(emailList);
 
-        for (String email : list) {
+        for (String email : emailList) {
             System.out.println(email);
         }
 
