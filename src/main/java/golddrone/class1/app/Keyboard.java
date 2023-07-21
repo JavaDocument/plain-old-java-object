@@ -5,7 +5,7 @@ import java.util.Scanner;
 public interface Keyboard {
     Long button();
 
-    static Keyboard getInstance() {
+    static KeyboardImpl getInstance() {
         return null;
     }
 }
