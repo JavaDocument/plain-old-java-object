@@ -43,7 +43,7 @@ public class Filter {
                 .map(String::length)
                 .anyMatch(size -> size >= MIN_EMAIL_SIZE && size < MAX_EMAIL_SIZE);
 
-        if (isAnyInvalidEmailSize) {
+        if (!isAnyInvalidEmailSize) {
             throw new IllegalArgumentException("이메일 길이는 11자 이상 20자 미만입니다.");
         }
     }
@@ -71,7 +71,7 @@ public class Filter {
     private static void validateNicknameSize() {
         Arrays.stream(list)
                 .map(profile -> profile[NICKNAME_IDX])
-                .filter(nickname -> nickname.length() >= MIN_NICKNAME_SIZE && nickname.length() < MAX_NICKNAME_SIZE)
+                .filter(nickname -> !(nickname.length() >= MIN_NICKNAME_SIZE && nickname.length() < MAX_NICKNAME_SIZE))
                 .findFirst()
                 .ifPresent(nickname -> {
                     throw new IllegalArgumentException("닉네임 길이는 1자 이상 20자 미만입니다. [value : " + nickname + "]");
