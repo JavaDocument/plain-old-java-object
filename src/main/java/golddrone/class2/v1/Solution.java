@@ -3,16 +3,14 @@ package golddrone.class2.v1;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Solution {
 
     public List<String> emailValidate(Map<String, String> crewList) throws CustomException {
+
         if (!(1 <= crewList.size() && crewList.size() <= 10000)) {
             throw new CustomException("크루 인원수는 1명 이상 10000명 이하에요");
         }
-
-//        제이엠제이슨워니엠제이이제엠
 
         List<String> list = new ArrayList<>();
 
