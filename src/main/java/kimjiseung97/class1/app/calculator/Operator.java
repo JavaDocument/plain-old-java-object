@@ -2,7 +2,7 @@ package kimjiseung97.class1.app.calculator;
 
 import java.util.List;
 
-public class Operator implements Calculator{
+public class Operator implements Calculator {
     @Override
     public double calculator(List<Character> objects) {
 
@@ -11,7 +11,7 @@ public class Operator implements Calculator{
         double secondNum = Integer.parseInt(String.valueOf(objects.get(2)));
 
         double result = 0.0;
-        switch (operator){
+        switch (operator) {
             case '+':
                 result += firstNum + secondNum;
                 break;
@@ -26,7 +26,7 @@ public class Operator implements Calculator{
                 break;
             case '%':
                 result += firstNum % secondNum;
-            break;
+                break;
         }
         return result;
     }
