@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 
 public class Service {
 
-    private static final int INT_OF_GA = (int) '가';
-    private static final int INT_OF_HIT = (int) '힣';
+    private static final int INT_OF_GA = '가';
+    private static final int INT_OF_HIT = '힣';
 
     private Service() {}
 
