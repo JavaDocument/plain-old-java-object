@@ -6,8 +6,8 @@ public class Open implements Book {
     private final RightPage rightPage;
 
     public Open() {
-        this.leftPage = LeftPage.newInstance();
-        this.rightPage = RightPage.newInstance();
+        this.leftPage = LeftPage.of();
+        this.rightPage = leftPage.getRightPage();
     }
 
     public static Book newInstance() {
@@ -18,6 +18,7 @@ public class Open implements Book {
     public int getMaxNumber() {
         int leftPageNumber = leftPage.getMaxNumber();
         int rightPageNumber = rightPage.getMaxNumber();
+
         return Math.max(leftPageNumber, rightPageNumber);
     }
 
