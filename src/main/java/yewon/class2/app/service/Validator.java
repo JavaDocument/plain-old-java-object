@@ -8,8 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Validator {
-    private final int SUB_LENGTH = 2;
-    private final DuplicateValidator duplicateValidator;
+
     private final EmailValidator emailValidator;
     private final NicknameValidator nicknameValidator;
     private final OutputHandler output;
@@ -18,21 +17,8 @@ public class Validator {
     public Validator() {
         nicknameValidator = new NicknameValidator();
         emailValidator = new EmailValidator();
-        duplicateValidator = new DuplicateValidator();
         output = new OutputHandler();
         this.duplicateEmailList = new LinkedList<>();
-    }
-
-    public List<String> findDuplicateNickname() {
-        List<Crew> crewList = CrewList.getInstance().getCrewList();
-        for (int i = 0; i < crewList.size() - 1; i++) {
-            Crew currentCrew = crewList.get(i);
-            for (int j = i + 1; j < crewList.size(); j++) {
-                Crew nextCrew = crewList.get(j);
-                isDuplicate(currentCrew, nextCrew);
-            }
-        }
-        return duplicateEmailList;
     }
 
     public void crewListValid(String inputCrewData) {
@@ -60,15 +46,5 @@ public class Validator {
         }
     }
 
-    private void isDuplicate(Crew currentCrew, Crew nextCrew) {
-        String currentNickname = currentCrew.getNickname();
-        String nextNickname = nextCrew.getNickname();
-        for (int i = 0; i < currentNickname.length() - SUB_LENGTH; i++) {
-            String subPrevNickname = currentNickname.substring(i, i + SUB_LENGTH);
-            if (nextNickname.contains(subPrevNickname)) {
-                duplicateEmailList.add(currentCrew.getEmail());
-                duplicateEmailList.add(nextCrew.getEmail());
-            }
-        }
-    }
+
 }
