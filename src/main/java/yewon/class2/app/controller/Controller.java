@@ -4,8 +4,10 @@ import yewon.class2.app.handler.InputHandler;
 import yewon.class2.app.handler.OutputHandler;
 import yewon.class2.app.repository.Crew;
 import yewon.class2.app.repository.CrewList;
+import yewon.class2.app.service.Service;
 import yewon.class2.app.service.Validator;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Controller {
@@ -13,13 +15,14 @@ public class Controller {
     private final InputHandler input;
     private final OutputHandler output;
     private final Validator validator;
-
+    private final Service service;
     private List<String> duplicateList;
 
     public Controller() {
-        validator = new Validator();
         input = new InputHandler();
         output = new OutputHandler();
+        validator = new Validator();
+        service = new Service(new LinkedList<>());
         on();
     }
 
@@ -34,7 +37,7 @@ public class Controller {
 
 
     private void solution() {
-        duplicateList = validator.findDuplicateNickname();
+        duplicateList = service.findDuplicateNickname();
         if (duplicateList.size() > 0) {
             String result = duplicateList.stream().distinct().sorted().toList().toString();
             output.message("result : " + result);
@@ -47,7 +50,7 @@ public class Controller {
         for (String crewList : parseArray(inputCrewData)) {
             String[] crew = crewList.split(", | ");
             validator.crewValid(crew);
-            CrewList.getInstance().setCrewList(new Crew(crew[0], crew[1])); // [0]=이메일, [1]=닉네임
+            CrewList.getInstance().setCrewList(new Crew(crew[0], crew[1])); // [0]="이메일", [1]="닉네임"
         }
     }
 

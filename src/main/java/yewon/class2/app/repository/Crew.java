@@ -2,8 +2,8 @@ package yewon.class2.app.repository;
 
 public class Crew {
 
-    String email;
-    String nickname;
+    private final String email;
+    private final String nickname;
 
     public Crew(String email, String nickname) {
         this.email = email;
