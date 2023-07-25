@@ -52,6 +52,10 @@ public class Service {
                         tempSet.add(nickname.substring(i, i + 1));
                     }
 
+                    Set<String> nicknameDuplicateCheckSetCopy = new HashSet<>(Set.copyOf(nicknameDuplicateCheckSet));
+
+                    if (!nicknameDuplicateCheckSetCopy.addAll(tempSet)) return false;
+
                     return nicknameDuplicateCheckSet.addAll(tempSet);
                 })
                 .sorted(Comparator.comparing(CrewRegisterRequestDTO::getEmail))
