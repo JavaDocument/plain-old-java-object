@@ -34,7 +34,7 @@ public class Solution {
 
             // 이메일 중복 검증
             outer:
-            for (int i = 2; i <= nickname.length(); i++) {
+            for (int i = 2; i <= nickname.length(); i++) {  // 제이, 이에    제이엠
 
                 for (int j = 0; j < nickname.length() - i +1  ; j++) {
 
