@@ -10,14 +10,14 @@ class PageTest {
     private Page page = LeftPage.newInstance();
 
     @Test
-    @DisplayName("랜덤으로 생성되는 페이지의 범위는 1이상 400이하일 것이다. (50만번)")
+    @DisplayName("랜덤으로 생성되는 페이지의 범위는 3이상 398이하일 것이다. (50만번)")
     void getPageNumberTest() {
         // given
         // when
         // then
         for (int i = 0; i < 500_000; i++) {
             int pageNumber = page.getPageNumber();
-            assertTrue(pageNumber >= page.MIN_SIZE && pageNumber <= page.MAX_SIZE);
+            assertTrue(pageNumber >= 3 && pageNumber <= 398);
         }
     }
 
