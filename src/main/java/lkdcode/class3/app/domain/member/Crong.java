@@ -19,4 +19,5 @@ public class Crong implements Player {
     public int getPlayerNumber() {
         return book.getMaxNumber();
     }
+
 }

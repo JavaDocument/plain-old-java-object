@@ -6,7 +6,7 @@ public class Open implements Book {
     private final RightPage rightPage;
 
     public Open() {
-        this.leftPage = LeftPage.of();
+        this.leftPage = LeftPage.newInstance();
         this.rightPage = leftPage.getRightPage();
     }
 

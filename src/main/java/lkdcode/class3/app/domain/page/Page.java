@@ -14,7 +14,7 @@ public sealed interface Page permits LeftPage, RightPage {
             SecureRandom random = SecureRandom.getInstanceStrong();
             return random.nextInt(MAX_SIZE) + MIN_SIZE;
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -23,9 +23,8 @@ public sealed interface Page permits LeftPage, RightPage {
         int addition = 0;
         int multiplication = 1;
 
-        for (int singleDigitIdx = 0; singleDigitIdx < calNumber.length(); singleDigitIdx++) {
-            int singleDigit = (int) calNumber.charAt(singleDigitIdx) - 48;
-
+        for (char digitChar : calNumber.toCharArray()) {
+            int singleDigit = Character.getNumericValue(digitChar);
             addition += singleDigit;
             multiplication *= singleDigit;
         }
