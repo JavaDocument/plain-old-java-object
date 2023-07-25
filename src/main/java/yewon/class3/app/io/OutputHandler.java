@@ -1,10 +1,13 @@
-package yewon.class3.app.handler;
+package yewon.class3.app.io;
 
-import yewon.class3.app.Result;
+import yewon.class3.app.user.Player;
+
+import java.util.List;
 
 public interface OutputHandler {
 
     void message(int message);
 
     void message(String result);
+
 }

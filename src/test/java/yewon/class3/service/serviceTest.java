@@ -3,8 +3,6 @@ package yewon.class3.service;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import yewon.class3.app.handler.OutputHandlerImpl;
-import yewon.class3.app.service.Service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
