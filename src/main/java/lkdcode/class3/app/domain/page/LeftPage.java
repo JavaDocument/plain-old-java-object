@@ -7,7 +7,7 @@ public final class LeftPage implements Page {
         this.number = getPageNumber();
     }
 
-    public static LeftPage of() {
+    public static LeftPage newInstance() {
         return new LeftPage();
     }
 
