@@ -8,10 +8,7 @@ import java.util.*;
 
 public class Controller {
 
-    // Result
-    private final int POBI_WIN = 1;
-    private final int CRONG_WIN = 2;
-    private final int DRAW = 0;
+
     private List<Player> players;
     private final NumberComparator comparator;
     private final OutputHandlerImpl output;
@@ -27,7 +24,7 @@ public class Controller {
         setMaxNumbersForPlayers(players);
         output.showMaxNumbers(players);
         Player winner = comparator.getWinner(players);
-        showResult(winner);
+        output.showResult(winner);
     }
 
     private void selectPagesForPlayers(List<Player> players) {
@@ -38,23 +35,12 @@ public class Controller {
 
     private void setMaxNumbersForPlayers(List<Player> players) {
         for (Player player : players) {
-            int maxNumber = comparator.getLargest(player);
+            int maxNumber = comparator.getLargest(player.getBook());
             player.setMaxNumber(maxNumber);
         }
     }
 
-    // 결과 출력
-    private void showResult(Player winner) {
-        if (winner.getName().equals("pobi")) {
-            output.message(POBI_WIN);
-            return;
-        }
-        if (winner.getName().equals("crong")){
-            output.message(CRONG_WIN);
-            return;
-        }
-        output.message(DRAW);
-    }
+
 
 
 

@@ -10,6 +10,4 @@ public interface OutputHandler {
 
     void message(String result);
 
-    void showSelectedPages(List<Player> players);
-    void showMaxNumbers(List<Player> players);
 }

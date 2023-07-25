@@ -1,5 +1,6 @@
 package yewon.class3.app.service;
 
+import yewon.class3.app.book.Book;
 import yewon.class3.app.common.ParserImpl;
 import yewon.class3.app.user.Player;
 
@@ -29,8 +30,8 @@ public class NumberComparator {
         return winner;
     }
 
-    public int getLargest(Player player) {
-        String[] selectedPages = player.getBook().getSelectedPage();
+    public int getLargest(Book book) {
+        String[] selectedPages = book.getSelectedPage();
         List<Integer> calcResultList = getCalcResultList(selectedPages);
         int maxNumber = Collections.max(calcResultList);
         return maxNumber;
