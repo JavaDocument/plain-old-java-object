@@ -11,27 +11,26 @@ public class Test {
 
     public static void main(String[] args) {
 
-        String leftPage = "131";
-        String rightPage = "132";
-        String[] pages = {leftPage, rightPage};
+        // 랜덤 페이지 만들기
+        int[] pages = {130, 131};
 
+        // 좌우페이지의 합과 곱
         int[] sums = new int[PAGES];
         int[] multiplies = new int[PAGES];
 
         for (int i = 0; i < pages.length; i++) {
-            String page = pages[i];
+            int page = pages[i];
 
             int sum = 0;
             int mul = 1;
 
-            for (int j = 0; j < page.length(); j++) {
-                char c = page.charAt(j);
-                if (Character.isDigit(c)) {
-                    int digit = c - '0';
-                    sum += digit;
-                    mul *= digit;
-                }
+            while (page > 0) {
+                int digit = page % 10;
+                sum += digit;
+                mul *= digit;
+                page /= 10;
             }
+
             sums[i] = sum;
             multiplies[i] = mul;
         }
@@ -43,9 +42,9 @@ public class Test {
         }
 
 
+        // 좌우페이지에서 가장 큰 숫자 찾기
         int[] numbers = {sums[0], sums[1], multiplies[0], multiplies[1]};
         int max = numbers[0];
-
 
         for (int number : numbers) {
             if (number > max) {
@@ -54,7 +53,6 @@ public class Test {
             }
         }
         System.out.println("max = " + max);
-
 
     }
 }

@@ -1,4 +1,4 @@
-package sum.class2.app;
+package sum.class2.apptest;
 
 import sum.class2.app.member.Member;
 
@@ -13,7 +13,9 @@ public class AppTest {
         for (String nickname : nicknameList) {
             for (int i = 0; i < nickname.length() - 1; i++) {
                 String twoChars = nickname.substring(i, i + 2);
+                System.out.println(twoChars);
                 countMap.put(twoChars, countMap.getOrDefault(twoChars, 0) + 1);
+                System.out.println(countMap.get(twoChars));
             }
         }
 
@@ -57,6 +59,7 @@ public class AppTest {
         Map<String, String> nicknameEmailMap = findDuplicateNicknames(nicknameList);
 
         for (String nickname : nicknameEmailMap.keySet()) {
+            System.out.println(nickname);
             String email = nicknameEmailMap.get(nickname);
             System.out.println(email);
         }
