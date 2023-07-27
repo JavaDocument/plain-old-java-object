@@ -82,12 +82,12 @@ public class OpenBook implements Book {
     }
 
     private int getMuiltipleOfDigits(int number) {
-        int product = 1;
+        int multiplenum = 1;
         while (number > 0) {
-            product *= number % 10;
+            multiplenum *= number % 10;
             number /= 10;
         }
-        return product;
+        return multiplenum;
     }
 }
 
