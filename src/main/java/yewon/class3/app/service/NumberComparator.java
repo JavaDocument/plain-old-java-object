@@ -32,12 +32,12 @@ public class NumberComparator {
 
     public int getLargest(Book book) {
         String[] selectedPages = book.getSelectedPage();
-        List<Integer> calcResultList = getCalcResultList(selectedPages);
-        int maxNumber = Collections.max(calcResultList);
+        List<Integer> calcResults = getCalcResults(selectedPages);
+        int maxNumber = Collections.max(calcResults);
         return maxNumber;
     }
 
-    private List<Integer> getCalcResultList(String[] selectedPages) {
+    private List<Integer> getCalcResults(String[] selectedPages) {
         List<Integer> calcResultList = new ArrayList<>();
         for (String page : selectedPages) {
             calcResultList.add(getSumDigits(page));
