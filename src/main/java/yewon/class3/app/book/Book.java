@@ -19,14 +19,14 @@ public class Book {
     // 페이지
     public void open() {
         int randomPage =  (int) (Math.random() * MAX_PAGE) + MIN_PAGE;
-        this.selectedPage = makePages(randomPage);
+        this.selectedPage = setPages(randomPage);
     }
 
     public String[] getSelectedPage() {
         return this.selectedPage;
     }
 
-    private String[] makePages(int randomPage) {
+    private String[] setPages(int randomPage) {
         if (isEvenNumber(randomPage)) {
             return new String[]{
                     parse.string(randomPage + PREV_PAGE)
