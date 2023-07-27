@@ -1,5 +1,6 @@
 package yewon.class2.app.repository;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,7 +25,7 @@ public class CrewList {
     }
 
     public List<Crew> getCrewList() {
-        return crewList;
+        return new LinkedList<>(crewList);
     }
 
     public List<String> getEmailList() {

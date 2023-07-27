@@ -4,17 +4,19 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 public sealed interface Page permits LeftPage, RightPage {
-    int MAX_SIZE = 400;
-    int MIN_SIZE = 1;
 
     int getMaxNumber();
 
     default int getPageNumber() {
+        final int INCREMENT_VALUE = 1;
+        final int MAX_SIZE = 398;
+        final int MIN_SIZE = 3;
+
         try {
             SecureRandom random = SecureRandom.getInstanceStrong();
-            return random.nextInt(MAX_SIZE) + MIN_SIZE;
+            return random.nextInt(MAX_SIZE - MIN_SIZE + INCREMENT_VALUE) + MIN_SIZE;
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 
@@ -23,9 +25,8 @@ public sealed interface Page permits LeftPage, RightPage {
         int addition = 0;
         int multiplication = 1;
 
-        for (int singleDigitIdx = 0; singleDigitIdx < calNumber.length(); singleDigitIdx++) {
-            int singleDigit = (int) calNumber.charAt(singleDigitIdx) - 48;
-
+        for (char digitChar : calNumber.toCharArray()) {
+            int singleDigit = Character.getNumericValue(digitChar);
             addition += singleDigit;
             multiplication *= singleDigit;
         }
