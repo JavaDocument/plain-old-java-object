@@ -1,8 +1,7 @@
-package qwr.class1.app;
+package qwr.class3.app;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import qwr.class3.app.Problem;
+
 import java.util.Arrays;
 import java.util.List;
 

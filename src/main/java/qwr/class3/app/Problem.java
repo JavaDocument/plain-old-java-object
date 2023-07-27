@@ -1,4 +1,4 @@
-package qwr.class1.app;
+package qwr.class3.app;
 
 import java.util.List;
 
