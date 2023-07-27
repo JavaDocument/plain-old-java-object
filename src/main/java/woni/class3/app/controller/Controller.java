@@ -36,12 +36,12 @@ public class Controller {
     }
 
   }
-//페이지 넘버
+//페이지 넘버 찾기
   public void pageNumber() {
     int[] pobiPage = service.getPage(Pobi);
     int[] crongPage = service.getPage(Crong);
 
-//    System.out.println( "포비의 페이지 : " + pobiPage);
+
     System.out.println("Pobi Page : " + Arrays.toString(pobiPage));
     System.out.println("Crong Page : " + Arrays.toString(crongPage));
 
@@ -54,7 +54,7 @@ public class Controller {
 
   }
 
-//  최댓값 각각 비교하여 우승자 리턴 
+//  최댓값 각각 비교하여 우승자 리턴
   public String winner(Player player1, Player player2) {
     int player1maxNumber = player1.getMaxNumber();
     int player2maxNumber = player2.getMaxNumber();
