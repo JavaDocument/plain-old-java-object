@@ -5,18 +5,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class PlayerInputList<T>{
+public class PlayerInputList {
 
-    private List<T> list;
+    private final List<Integer> list;
+
 
     public PlayerInputList() {
         list = new ArrayList<>();
     }
 
-    public void addNumber(T number){
-        list.add(number);
+    public void addNumber(int first, int second) {
+        list.add(first);
+        list.add(second);
     }
 
+    public int getIndex(int i) {
+        return list.get(i);
+    }
+
+    public void setNumber(int index, int result) {
+        list.set(index, result);
+    }
+
+    @Override
+    public String toString() {
+        return list.toString();
+    }
 
 
 }
