@@ -14,37 +14,6 @@ public class Service {
         return checkBiggerNumber(player);
     }
 
-    public List<Integer> checkDigit(int pageNumber){
-        List<Integer> eachDigit = new ArrayList<>();
-        int onesDigit=0, tensDigit=0, hundredsDigit=0;
-        //한자리 수인지, 두자리 수인지,세자리 수인지 확인
-        int digit = (int) (Math.log10(pageNumber) + 1); //Math 함수를 사용해서 int의 길이 구하는 방법
-
-        switch (digit) {
-            case 1: //한자리 숫자일때(1~9)
-                eachDigit.add(pageNumber);
-                break;
-            case 2: //두자리 숫자일때(10~99)
-                tensDigit = pageNumber / 10;
-                onesDigit = pageNumber % 10;
-
-                eachDigit.add(tensDigit);
-                eachDigit.add(onesDigit);
-                break;
-            case 3: //세자리 숫자일때(100~400)
-                hundredsDigit = pageNumber / 100;
-                tensDigit = (pageNumber /10) % 10;
-                onesDigit = pageNumber % 10;
-
-                eachDigit.add(hundredsDigit);
-                eachDigit.add(tensDigit);
-                eachDigit.add(onesDigit);
-                break;
-        }
-
-        return eachDigit;
-    }
-
     public int checkBiggerNumber(List<Integer> player){
         int biggerNumber=0;
         for (Integer playerPage: player) {
@@ -56,17 +25,28 @@ public class Service {
         return biggerNumber;
     }
 
+    public List<Integer> checkDigit(int pageNumber){
+        List<Integer> eachDigit = new ArrayList<>();
+
+        while(pageNumber!=0){
+            eachDigit.add(pageNumber%10);
+            pageNumber /= 10;
+        }
+
+        return eachDigit;
+    }
+
     private int addAndMultiply(List<Integer> eachDigit) {
-        //왼쪽 페이지에서 더 큰 수와 오른쪽 페이지에서 더 큰 수 중 어떤것이 더 큰지를 비교해야 하는데 그걸 어떻게...??
         int add=0, multiply=1,biggerNumber=0;
 
-        for (Integer ed :eachDigit) {
+        for (Integer ed : eachDigit) {
             add+=ed;
             multiply*=ed;
         }
+        System.out.println("add : "+add);
+        System.out.println("multiply : "+multiply);
         biggerNumber = add > multiply ? add : multiply;
 
-        System.out.println("biggerNumber : "+biggerNumber);
         return biggerNumber;
     }
 
