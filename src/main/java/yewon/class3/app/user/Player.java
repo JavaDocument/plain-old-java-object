@@ -4,8 +4,8 @@ import yewon.class3.app.book.Book;
 
 public class Player {
 
-    private String name;
-    private Book book;
+    private final String name;
+    private final Book book;
     private int maxNumber;
 
     public Player(String name) {
@@ -28,5 +28,9 @@ public class Player {
 
     public void setMaxNumber(int maxNumber) {
         this.maxNumber = maxNumber;
+    }
+
+    public void openBook() {
+        getBook().open();
     }
 }
