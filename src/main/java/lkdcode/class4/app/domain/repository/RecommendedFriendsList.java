@@ -18,8 +18,10 @@ public class RecommendedFriendsList implements SNSRepository<List<String>> {
     }
 
     @Override
-    public void addFriend(String name, PointType type) {
-        list.put(name, list.getOrDefault(name, 0) + type.getPoint());
+    public void addFriend(final String name, final PointType type) {
+        final int DEFAULT_POINT = 0;
+
+        list.put(name, list.getOrDefault(name, DEFAULT_POINT) + type.getPoint());
     }
 
 }

@@ -1,19 +1,13 @@
 package lkdcode.class4.app.domain.controller;
 
-import lkdcode.class4.app.domain.controller.request.FriendRequestDTO;
-import lkdcode.class4.app.domain.controller.request.VisitorRequestDTO;
-import lkdcode.class4.app.domain.service.PointService;
+import lkdcode.class4.app.domain.service.SNSService;
 
 public class SNSController {
 
-    private final PointService pointService;
+    private final SNSService pointService;
 
-    public SNSController(PointService pointService) {
+    public SNSController(final SNSService pointService) {
         this.pointService = pointService;
-    }
-
-    public void sns(FriendRequestDTO friendRequestDTO, VisitorRequestDTO visitorRequestDTO) {
-
     }
 
 }

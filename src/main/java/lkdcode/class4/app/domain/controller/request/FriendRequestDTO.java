@@ -8,12 +8,12 @@ public class FriendRequestDTO {
 
     private final List<String[]> friendList;
 
-    public FriendRequestDTO(String[][] list) {
+    public FriendRequestDTO(final String[][] list) {
         this.friendList = new ArrayList<>();
         friendList.addAll(Arrays.asList(list));
     }
 
-    public void delete(int index) {
+    public void delete(final int index) {
         friendList.remove(index);
     }
 

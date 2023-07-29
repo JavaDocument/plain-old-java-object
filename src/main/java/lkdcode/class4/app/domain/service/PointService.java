@@ -3,11 +3,13 @@ package lkdcode.class4.app.domain.service;
 import lkdcode.class4.app.domain.repository.RecommendedFriendsList;
 import lkdcode.class4.app.domain.repository.SNSRepository;
 
+import java.util.List;
+
 public class PointService {
 
     private final SNSRepository<RecommendedFriendsList> recommendedFriendsList;
 
-    public PointService(SNSRepository<RecommendedFriendsList> recommendedFriendsList) {
+    public PointService(final SNSRepository<RecommendedFriendsList> recommendedFriendsList) {
         this.recommendedFriendsList = recommendedFriendsList;
     }
 
@@ -16,15 +18,13 @@ public class PointService {
     }
 
     public void calculatorKnownFriends() {
-
     }
 
     public void calculatorVisitorList() {
-
     }
 
-    public void showList() {
-        System.out.println(recommendedFriendsList.getList());
+    public RecommendedFriendsList getList() {
+        return recommendedFriendsList.getList();
     }
 
 }

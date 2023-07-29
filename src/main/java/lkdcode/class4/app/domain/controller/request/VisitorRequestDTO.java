@@ -8,7 +8,7 @@ public class VisitorRequestDTO {
 
     private final List<String> visitorList;
 
-    public VisitorRequestDTO(String[] list) {
+    public VisitorRequestDTO(final String[] list) {
         this.visitorList = new ArrayList<>();
         visitorList.addAll(Arrays.asList(list));
     }
