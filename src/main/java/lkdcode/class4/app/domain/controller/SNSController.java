@@ -1,5 +1,7 @@
 package lkdcode.class4.app.domain.controller;
 
+import lkdcode.class4.app.domain.controller.request.FriendRequestDTO;
+import lkdcode.class4.app.domain.controller.request.VisitorRequestDTO;
 import lkdcode.class4.app.domain.service.PointService;
 
 public class SNSController {
@@ -10,10 +12,8 @@ public class SNSController {
         this.pointService = pointService;
     }
 
-    public void calculator() {
-        pointService.calculatorFriendList();
-        pointService.calculatorVisitorList();
-        pointService.showList();
+    public void sns(FriendRequestDTO friendRequestDTO, VisitorRequestDTO visitorRequestDTO) {
+
     }
 
 }
