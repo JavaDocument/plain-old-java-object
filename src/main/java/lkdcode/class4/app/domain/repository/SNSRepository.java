@@ -8,6 +8,6 @@ public interface SNSRepository {
 
     void addFriend(String name, PointType type);
 
-    List<String> getList();
+    List<String> findAllByOrderByPointDesc();
 
 }

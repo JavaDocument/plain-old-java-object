@@ -9,12 +9,26 @@ public class RecommendedFriendsList implements SNSRepository {
     private final Map<String, Integer> list;
 
     public RecommendedFriendsList() {
-        list = new TreeMap<>(Collections.reverseOrder());
+        list = new HashMap<>();
     }
 
     @Override
-    public List<String> getList() {
-        return new ArrayList<>(list.keySet());
+    public List<String> findAllByOrderByPointDesc() {
+        List<String> listKeySet = new ArrayList<>(list.keySet());
+        listKeySet.sort(this::order);
+
+        return new ArrayList<>(listKeySet);
+    }
+
+    private int order(String v1, String v2) {
+        final int SAME_POINT_VALUE = 0;
+        int compareResult = list.get(v2).compareTo(list.get(v1));
+
+        if (compareResult == SAME_POINT_VALUE) {
+            return v1.compareTo(v2);
+        }
+
+        return compareResult;
     }
 
     @Override
