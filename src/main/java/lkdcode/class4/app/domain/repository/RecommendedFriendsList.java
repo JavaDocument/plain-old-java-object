@@ -4,7 +4,7 @@ import lkdcode.class4.app.domain.user.PointType;
 
 import java.util.*;
 
-public class RecommendedFriendsList implements SNSRepository<List<String>> {
+public class RecommendedFriendsList implements SNSRepository {
 
     private final Map<String, Integer> list;
 
