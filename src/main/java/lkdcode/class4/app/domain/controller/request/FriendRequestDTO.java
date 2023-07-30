@@ -2,6 +2,7 @@ package lkdcode.class4.app.domain.controller.request;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class FriendRequestDTO {
@@ -13,8 +14,19 @@ public class FriendRequestDTO {
         friendList.addAll(Arrays.asList(list));
     }
 
-    public void delete(final int index) {
-        friendList.remove(index);
+    public void removeKnownFriend(final String name) {
+        Iterator<String[]> list = friendList.listIterator();
+
+        while (list.hasNext()) {
+            String[] array = list.next();
+
+            for (String checkName : array) {
+                if (checkName.contains(name)) {
+                    list.remove();
+                }
+            }
+        }
+
     }
 
     public List<String[]> getFriendList() {

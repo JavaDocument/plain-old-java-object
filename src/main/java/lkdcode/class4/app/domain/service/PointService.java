@@ -21,29 +21,47 @@ public class PointService implements SNSService {
 
     @Override
     public List<String> getRecommendedList(FriendRequestDTO friendRequestDTO, VisitorRequestDTO visitorRequestDTO) {
-        return recommendedFriendsList.getList();
+        calculatorKnownFriends(friendRequestDTO);
+        calculatorVisitorList(visitorRequestDTO);
+
+        return recommendedFriendsList.findAllByOrderByPointDesc();
     }
 
-    public void calculatorKnownFriends(FriendRequestDTO dto) {
+    private void calculatorKnownFriends(FriendRequestDTO dto) {
         List<String[]> friendList = dto.getFriendList();
-        for (int i = 0; i < friendList.size(); i++) {
-            String[] list = friendList.get(i);
-            if (list[0].equals(User.name)) {
-                dto.delete(i);
-                knownFriends.add(list[1]);
-            }
 
-            if (list[1].equals(User.name)) {
-                dto.delete(i);
-                knownFriends.add(list[0]);
-            }
+        for (String[] list : friendList) {
+            checkKnwonFriends(list);
         }
+
+        System.out.println("knownFriends = " + knownFriends);
 
         checkFriendOfFriend(dto);
     }
 
-    public void calculatorVisitorList(VisitorRequestDTO dto) {
+    private void checkKnwonFriends(String[] list) {
+        String firstName = list[0];
+        String secondName = list[1];
+
+        if (firstName.equals(User.name)) {
+            knownFriends.add(secondName);
+        }
+
+        if (secondName.equals(User.name)) {
+            knownFriends.add(firstName);
+        }
+    }
+
+    private void calculatorVisitorList(VisitorRequestDTO dto) {
         List<String> visitorList = dto.getVisitorList();
+
+        for (int i = 0; i < visitorList.size(); i++) {
+            String checkName = visitorList.get(i);
+            if (knownFriends.contains(checkName)) {
+                visitorList.remove(i);
+                i--;
+            }
+        }
 
         for (String name : visitorList) {
             recommendedFriendsList.addFriend(name, PointType.VISITOR);
@@ -52,18 +70,21 @@ public class PointService implements SNSService {
 
     private void checkFriendOfFriend(FriendRequestDTO dto) {
         List<String[]> friendList = dto.getFriendList();
+
         for (String[] list : friendList) {
             String firstName = list[0];
             String secondName = list[1];
+
             for (String knownFriend : knownFriends) {
-                if (firstName.equals(knownFriend)) {
+                if (firstName.equals(knownFriend) && !secondName.equals(User.name)) {
                     recommendedFriendsList.addFriend(secondName, PointType.FRIEND);
                 }
 
-                if (secondName.equals(knownFriend)) {
+                if (secondName.equals(knownFriend) && !firstName.equals(User.name)) {
                     recommendedFriendsList.addFriend(firstName, PointType.FRIEND);
                 }
             }
+
         }
     }
 

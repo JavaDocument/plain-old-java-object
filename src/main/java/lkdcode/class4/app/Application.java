@@ -3,6 +3,8 @@ package lkdcode.class4.app;
 import lkdcode.class4.app.domain.controller.SNSController;
 import lkdcode.class4.app.domain.controller.request.FriendRequestDTO;
 import lkdcode.class4.app.domain.controller.request.VisitorRequestDTO;
+import lkdcode.class4.app.domain.repository.RecommendedFriendsList;
+import lkdcode.class4.app.domain.service.PointService;
 import lkdcode.class4.app.domain.service.SNSService;
 
 public class Application {
@@ -16,8 +18,10 @@ public class Application {
 
         FriendRequestDTO friendRequestDTO = new FriendRequestDTO(friends);
         VisitorRequestDTO visitorRequestDTO = new VisitorRequestDTO(visitor);
+        SNSService service = new PointService(new RecommendedFriendsList());
 
-        SNSController snsController = new SNSController(null, friendRequestDTO, visitorRequestDTO);
+        SNSController snsController = new SNSController(service, friendRequestDTO, visitorRequestDTO);
+        snsController.getRecommendedList();
 
     }
 
