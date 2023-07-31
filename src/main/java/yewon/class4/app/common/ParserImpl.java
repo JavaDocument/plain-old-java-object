@@ -12,9 +12,5 @@ public class ParserImpl implements Parser {
         return str.replaceAll("\"", "");
     }
 
-    @Override
-    public String removeBracket(String str) {
-        return str.replaceAll("[\\[\\]]", "");
-    }
 
 }
