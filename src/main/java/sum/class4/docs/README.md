@@ -3,6 +3,45 @@
 <br>
 <br>
 
+### 생각한 방향
+1. user가 있다.
+2. 친구 정보가 있다.
+   - user와 함께 아는 친구 : +10점
+3. user 타임라인 방문 기록이 주어진다.
+   - 타임라인 방문한 횟수 : +1점
+4. 점수가 가장 높은 순으로 정렬해서 최대 5명 리턴
+   - 추천점수가 0이면 추천 하지 않고, 추천점수 동일 시 이름순으로 정렬
+
+
+### 새로 알게 된 것
+- Map.Entry
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+
+public class Main {
+    public static void main(String[] args) {
+        Map<String, Integer> fruitPrices = new HashMap<>();
+        fruitPrices.put("apple", 1000);
+        fruitPrices.put("orange", 800);
+        fruitPrices.put("banana", 1200);
+
+        // Map의 각 엔트리를 순회하는 for-each 문법 예시
+        for (Map.Entry<String, Integer> entry : fruitPrices.entrySet()) {
+            String fruit = entry.getKey();
+            int price = entry.getValue();
+            System.out.println(fruit + ": " + price + "원");
+        }
+    }
+}
+
+```
+
+
+<br>
+<br>
+
 #### 🤔 체크리스트
 
 - [ ] 코드 자동 정렬?
