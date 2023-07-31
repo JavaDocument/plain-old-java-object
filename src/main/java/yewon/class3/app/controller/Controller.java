@@ -8,8 +8,6 @@ import java.util.*;
 
 public class Controller {
 
-
-    private List<Player> players;
     private final NumberComparator comparator;
     private final OutputHandlerImpl output;
 
@@ -29,7 +27,7 @@ public class Controller {
 
     private void selectPagesForPlayers(List<Player> players) {
         for (Player player : players) {
-            player.getBook().open();
+            player.openBook();
         }
     }
 
