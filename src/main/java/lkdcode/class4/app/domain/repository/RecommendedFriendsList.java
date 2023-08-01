@@ -9,7 +9,7 @@ public class RecommendedFriendsList implements SNSRepository {
     private final Map<String, Integer> list;
 
     public RecommendedFriendsList() {
-        list = new HashMap<>();
+        this.list = new HashMap<>();
     }
 
     @Override

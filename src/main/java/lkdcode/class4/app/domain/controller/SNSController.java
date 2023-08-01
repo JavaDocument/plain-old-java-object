@@ -12,13 +12,17 @@ public class SNSController {
     private final FriendRequestDTO friendRequestDTO;
     private final VisitorRequestDTO visitorRequestDTO;
 
-    public SNSController(final SNSService pointService, final FriendRequestDTO friendRequestDTO, final VisitorRequestDTO visitorRequestDTO) {
+    private SNSController(final SNSService pointService, final FriendRequestDTO friendRequestDTO, final VisitorRequestDTO visitorRequestDTO) {
         this.pointService = pointService;
         this.friendRequestDTO = friendRequestDTO;
         this.visitorRequestDTO = visitorRequestDTO;
     }
 
-    public void getRecommendedList() {
+    public static SNSController of(final SNSService snsService, final FriendRequestDTO friendRequestDTO, final VisitorRequestDTO visitorRequestDTO) {
+        return new SNSController(snsService, friendRequestDTO, visitorRequestDTO);
+    }
+
+    public void printRecommendedList() {
         List<String> recommendedList = pointService.getRecommendedList(friendRequestDTO, visitorRequestDTO);
         System.out.println(recommendedList);
     }

@@ -34,8 +34,6 @@ public class PointService implements SNSService {
             checkKnwonFriends(list);
         }
 
-        System.out.println("knownFriends = " + knownFriends);
-
         checkFriendOfFriend(dto);
     }
 
