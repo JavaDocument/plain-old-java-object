@@ -11,6 +11,6 @@ public class ValueBounds {
     public final static String INPUT_VISITORS_LIST = "🐾 방문자 목록을 입력하세요 : ";
     public final static int POINT_UP_BY_VISITOR = 1;
     public final static int POINT_UP_BY_FRIEND = 10;
-    public final static int RECOMMEND_LENGTH_MAX = 4;
+    public final static int RECOMMEND_LENGTH_MAX = 5;
 
 }
