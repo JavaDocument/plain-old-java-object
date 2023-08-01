@@ -1,4 +1,4 @@
-package yewon.class4.app.entity;
+package yewon.class4.app.domain;
 
 import java.util.*;
 

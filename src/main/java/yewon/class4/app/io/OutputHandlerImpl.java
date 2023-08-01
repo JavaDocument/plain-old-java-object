@@ -1,6 +1,6 @@
 package yewon.class4.app.io;
 
-import yewon.class4.app.entity.User;
+import yewon.class4.app.domain.User;
 
 import java.util.List;
 

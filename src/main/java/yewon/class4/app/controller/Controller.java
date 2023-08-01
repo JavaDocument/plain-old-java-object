@@ -1,7 +1,9 @@
 package yewon.class4.app.controller;
 
 import yewon.class4.app.Service.RecommendFriendService;
-import yewon.class4.app.entity.User;
+import yewon.class4.app.Service.StringParseService;
+import yewon.class4.app.domain.User;
+import yewon.class4.app.domain.UserList;
 import yewon.class4.app.io.InputHandlerImpl;
 import yewon.class4.app.io.OutputHandlerImpl;
 import yewon.class4.app.common.ParserImpl;
@@ -15,20 +17,21 @@ import static yewon.class4.app.common.ValueBounds.*;
 public class Controller {
 
     private boolean hasVisitors; // 방문자목록이 주어졌는가?
+    private final UserList users;
     private final InputHandlerImpl input;
     private final OutputHandlerImpl<String> output;
-    private final ParserImpl parser;
     private final RecommendFriendService pointManager;
+    private final StringParseService parser;
 
     public Controller() {
+        hasVisitors = true;
+        users = new UserList();
         input = new InputHandlerImpl();
         output = new OutputHandlerImpl<>();
-        parser = new ParserImpl();
-        hasVisitors = true;
         pointManager = new RecommendFriendService();
+        parser = new StringParseService();
     }
 
-    // TODO : 리팩터링, 로직은 서비스로 이동
     public void solution() {
 
         // 정보 입력받기
@@ -36,30 +39,22 @@ public class Controller {
         String inputFriends = inputInfo(INPUT_FRIENDS_LIST);
         String inputVisitors = inputInfo(INPUT_VISITORS_LIST);
 
+        // 사용자, 유저 리스트 생성
+        User user = new User(userName, new LinkedList<>(), new LinkedList<>());
+        users.addUser(user);
+
+        // 친구 목록 생성
+        String[][] friends = parser.friendsParsing(inputFriends);
+
+        // 방문자 목록이 주어졌는지 검사
         if (inputVisitors == null || inputVisitors.length() == 0) {
             hasVisitors = false;
         }
 
-        // 사용자, 유저 리스트 생성
-        User user = new User(userName, new LinkedList<>(), new LinkedList<>());
-        List<User> users = new ArrayList<>();
-        users.add(user);
-//        UserList.of().addUser(user);
-
-        // 파싱
-        // 친구목록 파싱 - 바깥 [[, ]], " 제거 후 '], [' 를 기준으로 나눈다.
-        String element = inputFriends.substring(2, inputFriends.length() - 2);
-        String[] rowFriends = parser.removeQuotes(element).split("\\], \\[");
-        String[][] friends = new String[rowFriends.length][2];
-        for (int i = 0; i < rowFriends.length; i++) {
-            friends[i] = rowFriends[i].split(", ");
-        }
-
         // 방문자목록 파싱
-        // visitors[0] = bedi
-        String[] visitors = null;
         if (hasVisitors) {
-            visitors = parser.removeAllSymbols(inputVisitors).split(", ");
+            String[] visitors = parser.visitorsParsing(inputVisitors);
+            addVisitorsToUser(user, users, visitors);
         }
 
         // 아이디A의 친구목록에 아이디B 추가, 아이디B의 친구목록에 아이디A 추가
@@ -116,6 +111,31 @@ public class Controller {
         }
 
         output.result(top5User);
+    }
+
+    private void addVisitorsToUser(User user, List<User> users, String[] visitors) {
+        for (String visitor : visitors) {
+            User newVisitor = findOrCreateUser(users, visitor);
+            for (int i = 0; i < users.size(); i++) {
+                if (users.get(i).getName().equals(visitor)) {
+                    newVisitor = users.get(i);
+                    users.remove(i);
+                    break;
+                }
+                newVisitor = new User(visitor, new LinkedList<>(), new LinkedList<>());
+            }
+            user.addVisitor(newVisitor);
+            users.add(newVisitor);
+        }
+    }
+
+    private User findOrCreateUser(List<User> users, String usersName) {
+        for (User user : users) {
+            if (user.getName().equals(usersName)) {
+                return user;
+            }
+        }
+        return new User(usersName, new LinkedList<>(), new LinkedList<>());
     }
 
     private String inputInfo(String message) {

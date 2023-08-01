@@ -1,7 +1,7 @@
 package yewon.class4.app.Service;
 
-import yewon.class4.app.entity.Point;
-import yewon.class4.app.entity.User;
+import yewon.class4.app.domain.Point;
+import yewon.class4.app.domain.User;
 
 import java.util.*;
 
