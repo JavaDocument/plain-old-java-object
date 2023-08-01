@@ -8,9 +8,13 @@ public class VisitorRequestDTO {
 
     private final List<String> visitorList;
 
-    public VisitorRequestDTO(final String[] list) {
+    private VisitorRequestDTO(final String[] list) {
         this.visitorList = new ArrayList<>();
         visitorList.addAll(Arrays.asList(list));
+    }
+
+    public static VisitorRequestDTO toDTO(final String[] entity) {
+        return new VisitorRequestDTO(entity);
     }
 
     public List<String> getVisitorList() {
