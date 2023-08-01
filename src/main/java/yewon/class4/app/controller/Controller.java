@@ -15,7 +15,6 @@ import static yewon.class4.app.common.ValueBounds.*;
 public class Controller {
 
     private boolean hasVisitors; // 방문자목록이 주어졌는가?
-
     private final InputHandlerImpl input;
     private final OutputHandlerImpl<String> output;
     private final ParserImpl parser;

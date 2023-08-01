@@ -2,6 +2,8 @@ package yewon.class4.app.entity;
 
 import yewon.class4.app.common.ValueBounds;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Queue;
 
 import static yewon.class4.app.common.ValueBounds.MAX;
@@ -21,7 +23,7 @@ public class Friends {
     }
 
     public Queue<User> getFriends() {
-        return friends;
+        return new LinkedList<>(friends);
     }
 
     private void validateSize(Queue<User> friends) {

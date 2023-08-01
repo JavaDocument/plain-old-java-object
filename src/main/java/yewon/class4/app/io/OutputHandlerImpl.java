@@ -6,7 +6,11 @@ import java.util.List;
 
 public class OutputHandlerImpl<T> implements OutputHandler<T> {
 
-    StringBuilder sb = new StringBuilder();
+    private final StringBuilder sb;
+
+    public OutputHandlerImpl() {
+        this.sb = new StringBuilder();
+    }
 
     @Override
     public void message(T message) {
@@ -15,9 +19,9 @@ public class OutputHandlerImpl<T> implements OutputHandler<T> {
 
     @Override
     public void result(List<User> top5User) {
-        sb.append("💕 추천친구" + "\n");
+        sb.append("💕 추천친구").append(System.getProperty("line.separator"));
         for (User recommendFriend : top5User) {
-            sb.append(recommendFriend.getName() + "\n");
+            sb.append(recommendFriend.getName()).append(System.getProperty("line.separator"));
         }
         System.out.print(sb);
     }

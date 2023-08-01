@@ -1,5 +1,7 @@
 package yewon.class4.app.entity;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Queue;
 
 import static yewon.class4.app.common.ValueBounds.MAX;
@@ -13,7 +15,7 @@ public class Visitors {
     }
 
     public Queue<User> getVisitors() {
-        return visitors;
+        return new LinkedList<>(visitors);
     }
 
     private void validateSize(Queue<User> visitors) {
