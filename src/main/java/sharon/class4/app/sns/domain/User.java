@@ -1,23 +1,37 @@
 package sharon.class4.app.sns.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
 
-    public String id;
-    private int friends;
-    private int visitor;
-
+    private String id;
+    private List<String> friends;
+    private int visitorPoint;
 
     public User(String id) {
         this.id = id;
-        this.friends = 0;
-        this.visitor = 0;
+        this.friends = new ArrayList<>();
+        this.visitorPoint = 0;
     }
 
-    public void addFriendPoint() {
-        friends += 10;
+    public void addFriend(String friendId) {
+        friends.add(friendId);
+    }
+
+    public List<String> getFriends() {
+        return friends;
     }
 
     public void addVisitorPoint() {
-        visitor += 1;
+        visitorPoint++;
+    }
+
+    public int getVisitorPoint() {
+        return visitorPoint;
+    }
+
+    public String getId() {
+        return id;
     }
 }
