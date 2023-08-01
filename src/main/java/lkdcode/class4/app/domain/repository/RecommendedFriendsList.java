@@ -9,7 +9,7 @@ public class RecommendedFriendsList implements SNSRepository {
     private final Map<String, Integer> list;
 
     public RecommendedFriendsList() {
-        list = new HashMap<>();
+        this.list = new HashMap<>();
     }
 
     @Override
@@ -20,7 +20,7 @@ public class RecommendedFriendsList implements SNSRepository {
         return new ArrayList<>(listKeySet);
     }
 
-    private int order(String v1, String v2) {
+    private int order(final String v1, final String v2) {
         final int SAME_POINT_VALUE = 0;
         int compareResult = list.get(v2).compareTo(list.get(v1));
 

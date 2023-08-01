@@ -30,8 +30,6 @@ public sealed interface Page permits LeftPage, RightPage {
             addition += singleDigit;
             multiplication *= singleDigit;
         }
-
         return Math.max(addition, multiplication);
     }
-
 }
