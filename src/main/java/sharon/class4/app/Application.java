@@ -1,6 +1,7 @@
 package sharon.class4.app;
 
 import sharon.class4.app.sns.controller.SnsController;
+import sharon.class4.app.sns.service.SnsService;
 
 public class Application {
 
@@ -18,9 +19,12 @@ public class Application {
 
         String loggedInUser = "mrko";
 
-        String[] recommendedFriends = SnsController.recommendFriends(snsRegisteredFriends, visitor, loggedInUser);
+        SnsController snsController = new SnsController(new SnsService());
+        String[] recommendedFriends = snsController.recommendFriends(snsRegisteredFriends, visitor, loggedInUser);
 
-        System.out.println("recommendedFriends = " + recommendedFriends);
+        for (String recommendedFriend : recommendedFriends) {
+            System.out.println("recommendedFriend.toString() = " + recommendedFriend);
+        }
     }
 
 }
