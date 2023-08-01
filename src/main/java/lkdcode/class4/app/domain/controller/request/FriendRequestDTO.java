@@ -13,7 +13,7 @@ public class FriendRequestDTO {
         friendList.addAll(Arrays.asList(list));
     }
 
-    public static FriendRequestDTO toDTO(String[][] entity) {
+    public static FriendRequestDTO toDTO(final String[][] entity) {
         return new FriendRequestDTO(entity);
     }
 

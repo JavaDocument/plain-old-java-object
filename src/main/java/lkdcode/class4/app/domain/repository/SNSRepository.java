@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface SNSRepository {
 
-    void addFriend(String name, PointType type);
+    void addFriend(final String name, final PointType type);
 
     List<String> findAllByOrderByPointDesc();
 

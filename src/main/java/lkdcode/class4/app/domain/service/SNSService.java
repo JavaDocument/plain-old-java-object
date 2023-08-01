@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface SNSService {
 
-    List<String> getRecommendedList(FriendRequestDTO friendRequestDTO, VisitorRequestDTO visitorRequestDTO);
+    List<String> getRecommendedList(final FriendRequestDTO friendRequestDTO, final VisitorRequestDTO visitorRequestDTO);
 
 }
