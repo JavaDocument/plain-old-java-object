@@ -6,7 +6,11 @@ import java.io.InputStreamReader;
 
 public class InputHandlerImpl implements InputHandler {
 
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private final BufferedReader br;
+
+    public InputHandlerImpl() {
+        this.br = new BufferedReader(new InputStreamReader(System.in));
+    }
 
     @Override
     public String input() {
