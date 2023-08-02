@@ -1,4 +1,4 @@
-package yewon.class4.app.entity;
+package yewon.class4.app.domain;
 
 import java.util.*;
 
@@ -7,11 +7,11 @@ import static yewon.class4.app.common.ValueBounds.*;
 public class Point {
     private Map<User, Integer> point;
 
-    public Point(Map<User, Integer> point) {
-        this.point = point;
+    public Point() {
+        this.point = new HashMap<>();
     }
 
-    public List<User> getTopUsersByPoint(User user, List<User> users) {
+    public List<User> getTopUsersByPoint(User user, UserList users) {
         addPointByFriend(user, users);
         addPointByVisitor(user);
 
@@ -34,15 +34,12 @@ public class Point {
         return users;
     }
 
-    // TODO : 리팩터링
-    private void addPointByFriend(User user, List<User> users) {
+    private void addPointByFriend(User user, UserList users) {
         for (User userFriend : user.getFriends()) {
-            for (User otherUser : users) {
-                if (otherUser.getName().equals(user.getName())) continue;
-                for (User otherUserFriend : otherUser.getFriends()) {
-                    if (otherUserFriend.getName().equals(userFriend.getName())) {
-                        point.put(otherUser, point.getOrDefault(user, 0) + POINT_UP_BY_FRIEND);
-                    }
+            for (User otherUser : users.getUsers()) {
+                if (otherUser == user) continue;
+                if (otherUser.getFriends().contains(userFriend)) {
+                    point.put(otherUser, point.getOrDefault(user, 0) + POINT_UP_BY_FRIEND);
                 }
             }
         }
