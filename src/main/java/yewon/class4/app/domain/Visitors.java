@@ -1,19 +1,19 @@
-package yewon.class4.app.entity;
+package yewon.class4.app.domain;
 
+import java.util.LinkedList;
 import java.util.Queue;
 
 import static yewon.class4.app.common.ValueBounds.MAX;
 
-public class Visitors {
-    private final Queue<User> visitors;
+public record Visitors(Queue<User> visitors) {
 
-    public Visitors(Queue<User> visitors) {
+    public Visitors {
         validateSize(visitors);
-        this.visitors = visitors;
     }
 
-    public Queue<User> getVisitors() {
-        return visitors;
+    @Override
+    public Queue<User> visitors() {
+        return new LinkedList<>(visitors);
     }
 
     private void validateSize(Queue<User> visitors) {
