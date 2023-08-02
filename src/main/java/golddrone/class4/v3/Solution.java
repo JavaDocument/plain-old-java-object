@@ -20,8 +20,8 @@ public class Solution {
     }
 
 
-    public void solution() {
-        String user = "mrko";
+    public void solution(String user) {
+
 
         String[][] frineds = {
                 {"donut", "andole"},
@@ -104,6 +104,13 @@ public class Solution {
 
         // 추천 점수가 가장 높은 순으로 정렬, 추천점수가 같은 경우는 이름순, 최대 5명
 
+        List<String> resultSet = recommendSort(result);
+
+        resultOutput(resultSet, result);
+
+    }
+
+    private static List<String> recommendSort(Map<String, Integer> result) {
         List<String> resultSet = new ArrayList<>(result.keySet());
 
         resultSet.sort((o1, o2) -> {
@@ -112,16 +119,27 @@ public class Solution {
                     return i;
                 }
         );
+        return resultSet;
+    }
 
+    // 결과를 출력하는 메서드
+    private void resultOutput(List<String> resultSet, Map<String, Integer> result) {
         int cnt = ZERO;
-        // 결과를 출력하는 코드
+
+        System.out.println("🤷‍♂️🤷‍♀️🤷‍♂️🤷‍♀️ recommend friends 🤷‍♂️🤷‍♀️🤷‍♂️🤷‍♀️");
+        System.out.println("no "+convertName("NAME") + "SCORE");
         for (String name : resultSet) {
             if (cnt >= MAX_RECOMMEND_FRIEND) break;
-            System.out.println(result.get(name) + " " + name);
+            String convertedName = convertName(name);
+            System.out.println(cnt + ". " + convertedName + result.get(name));
             cnt++;
         }
+        System.out.println("🤷‍♂️🤷‍♀️🤷‍♂️🤷‍🤷‍♂️🤷‍♀️🤷‍♂️🤷‍♀️‍🤷‍♂️🤷‍♀️🤷‍♂️🤷‍♀️‍🤷‍♂️🤷‍♀️🤷‍♂️🤷‍♀️");
+    }
 
-
+    // name 문자열 길이 반환하는 메서드
+    public String convertName(String name){
+        return String.format("%-10s", name);
     }
 
     private void initUserRepositorySecond(String[] visitor) {
