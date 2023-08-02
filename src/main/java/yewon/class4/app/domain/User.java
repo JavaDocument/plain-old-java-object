@@ -1,4 +1,4 @@
-package yewon.class4.app.entity;
+package yewon.class4.app.domain;
 
 import java.util.Queue;
 
@@ -24,11 +24,11 @@ public class User {
     }
 
     public Queue<User> getFriends() {
-        return friends.getFriends();
+        return friends.friends();
     }
 
     public Queue<User> getVisitors() {
-        return visitors.getVisitors();
+        return visitors.visitors();
     }
 
     private void validateUserNameLength(String userName) {
@@ -52,5 +52,6 @@ public class User {
     public void addVisitor(User user) {
         visitors.addVisitor(user);
     }
+
 
 }
