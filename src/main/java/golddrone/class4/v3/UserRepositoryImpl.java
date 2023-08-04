@@ -13,8 +13,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User findUser(String name) {
-        for(User user : userStorage){
-            if(user.getName().equals(name)){
+        for (User user : userStorage) {
+            if (user.getName().equals(name)) {
                 return user;
             }
         }
@@ -23,7 +23,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public boolean UserSaved(User user) {
-        if(findUser(user.getName())==null) {
+        if (findUser(user.getName()) == null) {
             userStorage.add(user);
             return true;
         }
