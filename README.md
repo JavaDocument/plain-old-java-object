@@ -61,3 +61,5 @@ return 하도록 solution 메서드를 완성하라. 이때 추천 점수가 0�
 [23.07.21](https://github.com/JavaDocument/Class1/blob/main/docs/230721.md)
 <br>
 [23.07.27](https://github.com/JavaDocument/Class1/blob/main/docs/230727.md)
+<br>
+[23.08.02](https://github.com/JavaDocument/Class1/blob/main/docs/230802.md)
