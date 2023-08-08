@@ -23,9 +23,6 @@ public class Service {
         Queue<Integer> digitQueue = new LinkedList<>();
 
         for (int i = 0; i < length; i++) {
-            if (i == length - 1)
-                digitQueue.add(Util.charToInt(number.charAt(i)) + 1);
-
             digitQueue.add(Util.charToInt(number.charAt(i)));
         }
 
@@ -33,7 +30,8 @@ public class Service {
         for (int i = 0; i < length; i++) {
             int exponent = length - i - 1;
             if (digitQueue.peek() == null) break;
-            int digit = digitQueue.poll();
+            Integer polled = digitQueue.poll();
+            int digit = exponent == 0 ? polled + 1 : polled;
 
             double divided = digit / 3.0;
             int share = (int) divided;
