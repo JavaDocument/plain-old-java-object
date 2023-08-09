@@ -34,8 +34,8 @@ public class Service {
             int digit = exponent == 0 ? polled + 1 : polled;
 
             double divided = digit / 3.0;
-            int share = (int) divided;
-            double remain = divided - share;
+            int quotient = (int) divided;
+            double remain = divided - quotient;
 
             if (digit != 0 && remain == 0) {
                 isDigitTriple[i] = true;
@@ -44,7 +44,7 @@ public class Service {
             int nth = (int) Math.pow(10, exponent);
             clapCount += 3 * exponent * nth * digit / 10;
 
-            int nthAdditionalClap = remain == 0 && share != 0 ? share - 1 : share;
+            int nthAdditionalClap = remain == 0 && quotient != 0 ? quotient - 1 : quotient;
             clapCount += nthAdditionalClap * nth;
 
             int additionalClap = calculateAdditional(i, isDigitTriple);
