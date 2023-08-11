@@ -12,8 +12,8 @@ public class Main {
     public static void main(String[] args) {
 
         String cryptogram = inputCode();
-        String solution = solution(cryptogram);
-        viewSolution(solution);
+        String decode = solution(cryptogram);
+        viewSolution(decode);
     }
 
 
