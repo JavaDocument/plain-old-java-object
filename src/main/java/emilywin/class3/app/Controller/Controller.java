@@ -9,7 +9,7 @@ public class Controller{
 
     //pobi / crong 입력 받기
     public Controller(){
-        List<Integer> pobi = Arrays.asList(97, 98);
+        List<Integer> pobi = Arrays.asList(88, 98);
         List<Integer> crong = Arrays.asList(197, 198);
 
         int result = start(pobi, crong);
