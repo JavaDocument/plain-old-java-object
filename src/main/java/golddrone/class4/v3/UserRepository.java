@@ -9,7 +9,6 @@ public interface UserRepository {
     User findUser(String name);
 
 
-
     // 유저를 저장한다.
     boolean UserSaved(User user);
 

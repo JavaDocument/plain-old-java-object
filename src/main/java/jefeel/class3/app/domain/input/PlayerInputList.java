@@ -9,7 +9,6 @@ public class PlayerInputList {
 
     private final List<Integer> list;
 
-
     public PlayerInputList() {
         list = new ArrayList<>();
     }

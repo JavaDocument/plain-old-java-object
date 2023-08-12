@@ -20,8 +20,8 @@ public class Solution {
     }
 
 
-    public void solution(){
-        String user = "mrko";
+    public void solution(String user) {
+
 
         String[][] frineds = {
                 {"donut", "andole"},
@@ -63,11 +63,11 @@ public class Solution {
             User user2 = userRepository.findUser(frineds[i][SECOND_USER]);
             Map<String, Integer> user1Friends = user1.getFriends();
             Map<String, Integer> user2Friends = user2.getFriends();
-            if(!user1Friends.containsKey(String.valueOf(user2.getName()))){
+            if (!user1Friends.containsKey(String.valueOf(user2.getName()))) {
                 user1Friends.put(user2.getName(), 0);
                 user1.setFriends(user1Friends);
             }
-            if(!user2Friends.containsKey(String.valueOf(user1.getName()))){
+            if (!user2Friends.containsKey(String.valueOf(user1.getName()))) {
                 user2Friends.put(user1.getName(), 0);
                 user2.setFriends(user2Friends);
             }
@@ -90,38 +90,56 @@ public class Solution {
             User s1 = userRepository.findUser(s);
             Map<String, Integer> friends1 = s1.getFriends();
             for (String string : friends1.keySet()) {
-                if(!friends.containsKey(String.valueOf(string)) && !string.equals(target.getName())){
+                if (!friends.containsKey(String.valueOf(string)) && !string.equals(target.getName())) {
                     result.put(string, result.getOrDefault(string, 0) + 10);
                 }
             }
         }
 
         for (String s : visitor) {
-            if(!friends.containsKey(String.valueOf(s)) && !s.equals(target.getName())){
+            if (!friends.containsKey(String.valueOf(s)) && !s.equals(target.getName())) {
                 result.put(s, result.getOrDefault(s, 0) + 1);
             }
         }
 
         // 추천 점수가 가장 높은 순으로 정렬, 추천점수가 같은 경우는 이름순, 최대 5명
 
+        List<String> resultSet = recommendSort(result);
+
+        resultOutput(resultSet, result);
+
+    }
+
+    private static List<String> recommendSort(Map<String, Integer> result) {
         List<String> resultSet = new ArrayList<>(result.keySet());
 
         resultSet.sort((o1, o2) -> {
                     int i = result.get(o2).compareTo(result.get(o1));
-                    if(i==0) return o1.compareTo(o2);
+                    if (i == 0) return o1.compareTo(o2);
                     return i;
                 }
         );
+        return resultSet;
+    }
 
+    // 결과를 출력하는 메서드
+    private void resultOutput(List<String> resultSet, Map<String, Integer> result) {
         int cnt = ZERO;
-        // 결과를 출력하는 코드
+
+        System.out.println("🤷‍♂️🤷‍♀️🤷‍♂️🤷‍♀️ recommend friends 🤷‍♂️🤷‍♀️🤷‍♂️🤷‍♀️");
+        System.out.println("no "+convertName("NAME") + "SCORE");
         for (String name : resultSet) {
-            if(cnt>=MAX_RECOMMEND_FRIEND) break;
-            System.out.println(result.get(name) + " " + name);
+            if (cnt >= MAX_RECOMMEND_FRIEND) break;
+            String convertedName = convertName(name);
+            System.out.println(cnt + ". " + convertedName + result.get(name));
             cnt++;
         }
+        System.out.println("🤷‍♂️🤷‍♀️🤷‍♂️🤷‍🤷‍♂️🤷‍♀️🤷‍♂️🤷‍♀️‍🤷‍♂️🤷‍♀️🤷‍♂️🤷‍♀️‍🤷‍♂️🤷‍♀️🤷‍♂️🤷‍♀️");
+    }
 
-
+    // name 문자열 길이 반환하는 메서드
+    public String convertName(String name){
+        return String.format("%-10s", name);
     }
 
     private void initUserRepositorySecond(String[] visitor) {
@@ -133,7 +151,7 @@ public class Solution {
     private void initUserRepositoryFirst(String[][] frineds) {
         for (int i = 0; i < frineds.length; i++) {
             for (int j = 0; j < frineds[i].length; j++) {
-                 isUserSaved(j, frineds[i]);
+                isUserSaved(j, frineds[i]);
             }
         }
     }

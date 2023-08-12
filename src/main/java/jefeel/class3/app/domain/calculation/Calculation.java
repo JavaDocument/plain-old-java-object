@@ -10,9 +10,10 @@ public class Calculation {
         this.firstNumber = myScore(firstNumber);
         this.secondNumber = myScore(secondNumber);
     }
+    // 생성자 문제?
 
 
-    public static int addEachNumber(int number) {
+    public int addEachNumber(int number) {
         int sum = 0;
         String convertNum = String.valueOf(number);
 
@@ -24,7 +25,7 @@ public class Calculation {
         return sum;
     }
 
-    public static int multiplyEachNumber(int number) {
+    public int multiplyEachNumber(int number) {
         int result = 1;
         String convertNum = String.valueOf(number);
 
