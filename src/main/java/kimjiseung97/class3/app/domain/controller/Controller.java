@@ -17,7 +17,7 @@ public class Controller {
             case 'Y', 'y' -> {
                 User firstuser = new User("크롱");
                 User seconduser = new User("포비");
-                int winnersnumber = service.findWinner(firstuser,seconduser);
+                int winnersnumber = service.findWinner(firstuser, seconduser);
                 return winnersnumber;
             }
             default -> {
