@@ -1,5 +1,5 @@
 package dongwoo.class5.app;
-
+//대문자 체크하기
 public class Problem1 {
     public static void main(String[] args) {
         StringBuffer buffer = new StringBuffer();
@@ -8,9 +8,7 @@ public class Problem1 {
         if (checkLength) {
             StringBuffer overlap = overlap(cryptogram);
             System.out.println("overlap = " + overlap);
-
         }
-
     }
 
     private static boolean checkCryptogram(StringBuffer cryptogram) {
