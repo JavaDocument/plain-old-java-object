@@ -18,7 +18,10 @@ public class Service {
         int j = 1;
         while (j < decryptingText.length()) {
             if (decryptingText.charAt(i) == decryptingText.charAt(j)) {
-                decryptingText.delete(i, j + 1);
+                int amount = 1;
+                while (decryptingText.charAt(i) == decryptingText.charAt(j + amount))
+                    amount++;
+                decryptingText.delete(i, j + amount);
                 if (i != 0) {
                     i--;
                     j--;
