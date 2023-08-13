@@ -16,7 +16,7 @@ public class Input {
             System.out.println("올바른 숫자를 다시  입력해주세요");
             return randomNumber();
         }
-
+        sc.close();
         return number;
     }
 
