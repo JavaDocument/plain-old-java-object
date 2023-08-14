@@ -3,7 +3,7 @@ package dongwoo.class5.app;
 public class Problem1 {
     public static void main(String[] args) {
         StringBuffer buffer = new StringBuffer();
-        StringBuffer cryptogram = buffer.append("sdfggfjkdlasjdflkajswe");
+        StringBuffer cryptogram = buffer.append("zyelleyz");
         boolean checkLength = checkCryptogram(cryptogram);
         if (checkLength) {
             StringBuffer overlap = overlap(cryptogram);
