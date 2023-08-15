@@ -1,55 +1,47 @@
 package dongwoo.class5.app;
+
+import java.util.Stack;
+
 //대문자 체크하기
 public class Problem1 {
     public static void main(String[] args) {
-        StringBuffer buffer = new StringBuffer();
-        StringBuffer cryptogram = buffer.append("zyelleyz");
+        Stack<Character> compare = new Stack<>();
+        String cryptogram = "zyelleyz";
+        StringBuffer stringBuffer = new StringBuffer();
+
         boolean checkLength = checkCryptogram(cryptogram);
-        if (checkLength) {
-            StringBuffer overlap = overlap(cryptogram);
-            System.out.println("overlap = " + overlap);
+
+        if(checkLength){
+            compare.push(cryptogram.charAt(0));
+
+            for (int i = 1; i < cryptogram.length(); i++) {
+                char cryp = cryptogram.charAt(i);
+
+                if(compare.peek().equals(cryp)){
+                    compare.pop();
+                }else {
+                    compare.push(cryp);
+
+                }
+
+            }
+
+            for (int i = 0; i < compare.size(); i++) {
+                stringBuffer.append(compare.get(i));
+            }
+
+            System.out.println("result = " + stringBuffer);
         }
+
+
     }
 
-    private static boolean checkCryptogram(StringBuffer cryptogram) {
+    private static boolean checkCryptogram(String cryptogram) {
         int length = cryptogram.length();
-        System.out.println("length = " + length);
-        if (length >= 1 && length <= 1000) {
+        if (length>=1&&length<=1000){
             return true;
         }
         return false;
+
     }
-
-    private static StringBuffer overlap(StringBuffer cryptogram) {
-
-        int length = cryptogram.length();
-
-            for (int s = 0; s < length; s++) {
-
-                try {
-                    char a = cryptogram.charAt(s);
-                    char b = cryptogram.charAt(s + 1);
-
-                    boolean matches = Character.toString(a).matches(Character.toString(b));
-
-                    if (matches==true) {
-                        StringBuffer delete = cryptogram.delete(s, s + 2);
-                        cryptogram = delete;
-                        s=0;
-
-                        if (delete.length()==2){
-                            StringBuffer stringBuffer = new StringBuffer();
-                            stringBuffer.append("");
-                            cryptogram=stringBuffer;
-                        }
-                    }
-                } catch (Exception e) {
-                }
-                System.out.println("cryptogram = " + cryptogram);
-                System.out.println("----------------------------------");
-            }
-
-        return cryptogram;
-    }
-
 }
