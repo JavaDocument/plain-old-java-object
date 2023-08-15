@@ -18,6 +18,8 @@ public class Input {
             System.out.println("다시 암호를 입력해주세요");
             return inputCode();
         }
+
+        sc.close();
         return code;
     }
 
