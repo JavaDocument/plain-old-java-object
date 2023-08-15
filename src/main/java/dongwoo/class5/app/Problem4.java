@@ -1,6 +1,6 @@
 package dongwoo.class5.app;
 
-public class Project4 {
+public class Problem4 {
     public static void main(String[] args) {
         int money=15000;
         int[] ints = exchangeMoney(money);
