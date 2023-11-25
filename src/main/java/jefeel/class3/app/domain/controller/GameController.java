@@ -9,9 +9,9 @@ import jefeel.class3.app.domain.output.OutputResult;
 
 public class GameController {
 
-    PlayerInputList pobi = new PlayerInputList();
-    PlayerInputList crong = new PlayerInputList();
-    static Calculation calculation = new Calculation();
+    private final PlayerInputList pobi = new PlayerInputList();
+    private final PlayerInputList crong = new PlayerInputList();
+    Calculation calculation = new Calculation();
     OutputResult outputResult = new OutputResult();
     public int finalScore;
 
