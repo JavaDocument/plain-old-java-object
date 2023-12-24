@@ -1,2 +1,4 @@
 rootProject.name = 'Class1'
+include 'lkdcode'
+include 'etc'
 
