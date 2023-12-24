@@ -1,2 +1,4 @@
-rootProject.name = 'Class1'
+rootProject.name = 'plain-old-java-object'
+include 'lkdcode'
+include 'etc'
 
