@@ -1,4 +1,4 @@
-package com.gof.chap01.singleton;
+package com.gof.chap01.singleton.step01;
 
 public class Main {
 

@@ -1,8 +1,6 @@
-package com.gof.chap01.singleton;
+package com.gof.chap01.singleton.step01;
 
 public class Dragon {
-
-    private Dragon dragon;
 
     public Dragon() {
         System.out.println("일반 드래곤 생성!");
