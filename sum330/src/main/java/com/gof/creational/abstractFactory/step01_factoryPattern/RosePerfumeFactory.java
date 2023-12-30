@@ -1,10 +1,10 @@
-package com.gof.creational.abstractFactory.step01;
+package com.gof.creational.abstractFactory.step01_factoryPattern;
 
-class SoapPerfumeFactory implements PerfumeFactory {
+class RosePerfumeFactory implements PerfumeFactory {
 
     @Override
     public Perfume makePerfume() {
-        return new SoapPerfume();
+        return new RosePerfume();
     }
 
     @Override
@@ -21,4 +21,6 @@ class SoapPerfumeFactory implements PerfumeFactory {
     public void delivery(String customazingName) {
         System.out.println("[" + customazingName + "] 을/를 배달하였습니다 ^0^");
     }
+
+
 }

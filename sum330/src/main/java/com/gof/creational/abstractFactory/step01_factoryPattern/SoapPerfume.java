@@ -1,4 +1,4 @@
-package com.gof.creational.abstractFactory.step01;
+package com.gof.creational.abstractFactory.step01_factoryPattern;
 
 class SoapPerfume extends Perfume {
 
