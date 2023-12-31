@@ -1,6 +1,6 @@
-package com.gof.behavioral.iterator.step01;
+package com.gof.behavioral.iterator.step02;
 
-public class Printer {
+class Printer {
 
     public void print(CustomIterator<Dragon> iterator) {
         while (iterator.hasNext()) {
@@ -8,5 +8,4 @@ public class Printer {
             System.out.println(dragon);
         }
     }
-
 }

@@ -1,23 +1,24 @@
 package com.gof.behavioral.iterator.step02;
 
-public class Main {
+class Main {
 
     public static void main(String[] args) {
 
-        // 다음값이 있으면 hasNext()
-        // getNext();
+        DragonList dragonList = new DragonList();
+        DragonArrays dragonArrays = new DragonArrays();
+        DragonMap dragonMap = new DragonMap();
 
+        dragonList.addDragon(new Dragon("드래곤 1", Gender.MALE));
+        dragonList.addDragon(new Dragon("드래곤 2", Gender.MALE));
+        dragonList.addDragon(new Dragon("드래곤 3", Gender.MALE));
 
-        RaccoonList raccoonList = new RaccoonList();
-        raccoonList.addRaccoon(new Raccoon("라쿤2", 1));
-        raccoonList.addRaccoon(new Raccoon("라쿤2", 2));
+        dragonArrays.addDragon(new Dragon("드래곤 4", Gender.FEMALE));
+        dragonArrays.addDragon(new Dragon("드래곤 5", Gender.FEMALE));
+        dragonArrays.addDragon(new Dragon("드래곤 6", Gender.FEMALE));
 
-        while (raccoonList.hasNext()) {
-            System.out.println(raccoonList.getNext());
-        }
-
-//        if (new ArrayList<>().get(0) == null) {
-//            System.out.println("?");
-//        }
+        Printer printer = new Printer();
+        printer.print(dragonList);
+        printer.print(dragonArrays);
+        printer.print(dragonMap);
     }
 }

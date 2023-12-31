@@ -1,20 +1,20 @@
 package com.gof.behavioral.iterator.step02;
 
-public class Raccoon {
+class Dragon {
 
     private String name;
-    private int age;
+    private Gender gender;
 
-    public Raccoon(String name, int age) {
+    public Dragon(String name, Gender gender) {
         this.name = name;
-        this.age = age;
+        this.gender = gender;
     }
 
     @Override
     public String toString() {
-        return "Raccoon{" +
+        return "Dragon{" +
                 "name='" + name + '\'' +
-                ", age=" + age +
+                ", gender=" + gender +
                 '}';
     }
 }

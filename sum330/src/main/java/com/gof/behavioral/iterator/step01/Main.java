@@ -1,16 +1,25 @@
 package com.gof.behavioral.iterator.step01;
 
 public class Main {
+
     public static void main(String[] args) {
-        DragonArrays dragonArrays = new DragonArrays();
-        DragonList dragonList = new DragonList();
-        DragonMap dragonMap = new DragonMap();
 
-        //
+        RaccoonList raccoonList = new RaccoonList();
+        raccoonList.addRaccoon(new Raccoon("라쿤1", 1));
+        raccoonList.addRaccoon(new Raccoon("라쿤2", 2));
+        raccoonList.addRaccoon(new Raccoon("라쿤3", 2));
 
-        Printer printer = new Printer();
-        printer.print(dragonArrays);
-        printer.print(dragonList);
-        printer.print(dragonMap);
+        while (raccoonList.hasNext()) {
+            System.out.println(raccoonList.getNext());
+        }
+
+        RaccoonArrays raccoonArrays = new RaccoonArrays();
+        raccoonArrays.addRaccoon(new Raccoon("라쿤1", 1));
+        raccoonArrays.addRaccoon(new Raccoon("라쿤2", 2));
+        raccoonArrays.addRaccoon(new Raccoon("라쿤3", 3));
+
+        while (raccoonArrays.hasNext()) {
+            System.out.println(raccoonArrays.getNext());
+        }
     }
 }

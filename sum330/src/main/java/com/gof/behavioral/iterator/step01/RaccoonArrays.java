@@ -1,4 +1,4 @@
-package com.gof.behavioral.iterator.step02;
+package com.gof.behavioral.iterator.step01;
 
 import java.util.Arrays;
 
@@ -23,7 +23,6 @@ public class RaccoonArrays implements CustomIterator<Raccoon> {
         if (index > hasIndex) {
             return true;
         }
-
         return false;
     }
 
@@ -32,7 +31,6 @@ public class RaccoonArrays implements CustomIterator<Raccoon> {
         if (!hasNext()) {
             return null;
         }
-
         return raccoonArrays[hasIndex++];
     }
 
