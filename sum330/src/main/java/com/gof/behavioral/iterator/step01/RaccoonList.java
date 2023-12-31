@@ -1,4 +1,4 @@
-package com.gof.behavioral.iterator.step02;
+package com.gof.behavioral.iterator.step01;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,6 @@ public class RaccoonList implements CustomIterator<Raccoon> {
         if (hasNext()) {
             return raccoonList.get(currentIndex++);
         }
-
         return null;
     }
 
