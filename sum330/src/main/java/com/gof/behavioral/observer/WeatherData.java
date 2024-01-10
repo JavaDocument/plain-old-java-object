@@ -1,4 +1,4 @@
-package com.gof.creational.observer;
+package com.gof.behavioral.observer;
 
 import java.util.ArrayList;
 import java.util.List;
