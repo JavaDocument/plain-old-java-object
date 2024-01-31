@@ -1,4 +1,4 @@
-package com.gof.structual.chainOfResponsibility.step01;
+package com.gof.behavioral.chainOfResponsibility.step01;
 
 class APrint extends PrintMiddleware {
     @Override

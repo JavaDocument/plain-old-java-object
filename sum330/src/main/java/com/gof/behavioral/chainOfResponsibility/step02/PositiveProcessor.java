@@ -1,4 +1,4 @@
-package com.gof.structual.chainOfResponsibility.step02;
+package com.gof.behavioral.chainOfResponsibility.step02;
 
 class PositiveProcessor implements Chain {
 
